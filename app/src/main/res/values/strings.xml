@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">PosyanduAndroid</string>
+    <string name="username_login"> username... </string>
+    <string name="password_login"> password... </string>
 </resources>
