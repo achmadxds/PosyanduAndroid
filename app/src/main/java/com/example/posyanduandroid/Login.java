@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.Button;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class Login extends AppCompatActivity {
@@ -14,23 +15,17 @@ public class Login extends AppCompatActivity {
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.login);
+  }
 
-    Button btnLogin = (Button) findViewById(R.id.btnLogin);
-    btnLogin.setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View v) {
-        Intent i = new Intent(Login.this, Dashboard.class);
-        startActivity(i);
-      }
-    });
+  public void MengLogin(View view) {
+    Intent i = new Intent(Login.this, Dashboard.class);
+    startActivity(i);
+    finish();
+  }
 
-    Button btnToRegist = (Button) findViewById(R.id.btnToRegist);
-    btnToRegist.setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View v) {
-        Intent i = new Intent(Login.this, Registrasi.class);
-        startActivity(i);
-      }
-    });
+  public void RegistrasiView(View view) {
+    Intent i = new Intent(Login.this, Registrasi.class);
+    startActivity(i);
+
   }
 }

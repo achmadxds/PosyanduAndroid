@@ -6,22 +6,19 @@ import android.view.View;
 import android.widget.Button;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class Registrasi extends AppCompatActivity {
   @Override
   protected void onCreate(Bundle savedInstanceState) {
+    AlertDialog alertDialog = new AlertDialog.Builder(Registrasi.this).create(); //Read Update
+    alertDialog.setTitle("PESAN!!");
+    alertDialog.setMessage("Pastikan Anda Sudah Mengantongi Kode Unik Dari Poyandu!!");
+
     super.onCreate(savedInstanceState);
     setContentView(R.layout.registrasi);
-
-    Button btnBackToLogin = (Button) findViewById(R.id.btnBackToLogin);
-    btnBackToLogin.setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View v) {
-        Intent i = new Intent(Registrasi.this, Login.class);
-        startActivity(i);
-      }
-    });
+    alertDialog.show();
   }
 
   public void Kembali(View view) {

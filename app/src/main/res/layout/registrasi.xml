@@ -1,109 +1,116 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-  xmlns:tools="http://schemas.android.com/tools"
-  android:layout_height="match_parent"
-  android:layout_width="match_parent"
-  android:background="@color/primary"
-  android:paddingLeft="20dp"
-  android:paddingRight="20dp"
-  android:paddingTop="16dp"
-  android:paddingBottom="16dp"
-  android:layout_gravity="center"
-  android:orientation="vertical"
-  tools:context=".Registrasi">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:background="@color/primary"
+    android:paddingLeft="@dimen/_20sdp"
+    android:paddingRight="@dimen/_20sdp"
+    android:layout_gravity="center"
+    android:orientation="vertical"
+    tools:context=".Registrasi">
 
-  <TextView
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_centerHorizontal="true"
-    android:layout_marginTop="@dimen/_80sdp"
-    android:textStyle="bold"
-    android:textSize="50dp"
-    android:text="Daftar User"
-    android:textColor="@color/white" >
 
-  </TextView>
+      <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
-  <EditText
-    android:layout_width="@dimen/_245sdp"
-    android:layout_height="@dimen/_33sdp"
-    android:layout_marginStart="20dp"
-    android:layout_marginTop="@dimen/_150sdp"
-    android:layout_marginEnd="20dp"
-    android:paddingLeft="10dp"
-    android:hint="Nama Pengguna"
-    android:background="@drawable/rounded_bg"
-    android:layout_centerHorizontal="true"
-    android:singleLine="true"
-    android:textColorHint="@color/black" />
+        <TextView
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_gravity="center"
+          android:layout_marginTop="@dimen/_85sdp"
+          android:textStyle="bold"
+          android:textSize="@dimen/_45ssp"
+          android:text="Daftar User"
+          android:textColor="@color/white" >
 
-  <EditText
-    android:layout_width="@dimen/_245sdp"
-    android:layout_height="@dimen/_33sdp"
-    android:layout_marginStart="20dp"
-    android:layout_marginTop="@dimen/_190sdp"
-    android:layout_marginEnd="20dp"
-    android:paddingLeft="10dp"
-    android:hint="Username"
-    android:background="@drawable/rounded_bg"
-    android:layout_centerHorizontal="true"
-    android:singleLine="true"
-    android:textColorHint="@color/black" />
+        </TextView>
 
-  <EditText
-    android:layout_width="@dimen/_245sdp"
-    android:layout_height="@dimen/_33sdp"
-    android:layout_marginStart="20dp"
-    android:layout_marginTop="@dimen/_230sdp"
-    android:layout_marginEnd="20dp"
-    android:paddingLeft="10dp"
-    android:hint="Kata Sandi"
-    android:background="@drawable/rounded_bg"
-    android:layout_centerHorizontal="true"
-    android:singleLine="true"
-    android:textColorHint="@color/black" />
+        <EditText
+          android:layout_width="@dimen/_240sdp"
+          android:layout_height="@dimen/_33sdp"
+          android:layout_marginStart="@dimen/_15sdp"
+          android:layout_marginTop="@dimen/_20sdp"
+          android:layout_marginEnd="20dp"
+          android:paddingLeft="10dp"
+          android:hint="Kode Unik"
+          android:background="@drawable/rounded_bg"
+          android:layout_centerHorizontal="true"
+          android:singleLine="true"
+          android:textColorHint="@color/black" />
 
-  <EditText
-    android:layout_width="@dimen/_245sdp"
-    android:layout_height="@dimen/_33sdp"
-    android:paddingLeft="10dp"
-    android:layout_marginStart="20dp"
-    android:layout_marginTop="@dimen/_270sdp"
-    android:layout_centerHorizontal="true"
-    android:background="@drawable/rounded_bg"
-    android:layout_marginEnd="20dp"
-    android:hint="No WA"
-    android:singleLine="true"
-    android:textColorHint="@color/black" />
+        <EditText
+          android:layout_width="@dimen/_240sdp"
+          android:layout_height="@dimen/_33sdp"
+          android:paddingLeft="10dp"
+          android:layout_marginStart="20dp"
+          android:layout_marginTop="@dimen/_20sdp"
+          android:layout_centerHorizontal="true"
+          android:background="@drawable/rounded_bg"
+          android:layout_marginEnd="20dp"
+          android:hint="Username"
+          android:singleLine="true"
+          android:textColorHint="@color/black" />
 
-  <Button
-    android:id="@+id/btnMakeAccount"
-    android:layout_width="@dimen/_250sdp"
-    android:layout_height="wrap_content"
-    android:layout_marginStart="20dp"
-    android:layout_marginTop="@dimen/_340sdp"
-    android:backgroundTint="#32a852"
-    android:textSize="15dp"
-    android:textStyle="bold"
-    android:text="Buat Akun"
-    android:layout_centerHorizontal="true"
-    android:textColor="@color/white"
-    android:textAllCaps="true"
-    />
+        <EditText
+          android:layout_width="@dimen/_240sdp"
+          android:layout_height="@dimen/_33sdp"
+          android:layout_marginStart="@dimen/_15sdp"
+          android:layout_marginTop="@dimen/_10sdp"
+          android:layout_marginEnd="20dp"
+          android:paddingLeft="10dp"
+          android:hint="Password"
+          android:background="@drawable/rounded_bg"
+          android:layout_centerHorizontal="true"
+          android:singleLine="true"
+          android:textColorHint="@color/black" />
 
-  <Button
-    android:id="@+id/btnBackToLogin"
-    android:layout_width="@dimen/_250sdp"
-    android:layout_height="wrap_content"
-    android:layout_marginStart="20dp"
-    android:layout_marginTop="@dimen/_380sdp"
-    android:backgroundTint="#2448bd"
-    android:text="Kembali"
-    android:textStyle="bold"
-    android:textSize="15dp"
-    android:layout_centerHorizontal="true"
-    android:textColor="@color/white"
-    android:textAllCaps="true"
-    />
+        <EditText
+          android:layout_width="@dimen/_240sdp"
+          android:layout_height="@dimen/_33sdp"
+          android:layout_marginStart="@dimen/_15sdp"
+          android:layout_marginTop="@dimen/_10sdp"
+          android:layout_marginEnd="20dp"
+          android:paddingLeft="10dp"
+          android:hint="Re-Password"
+          android:background="@drawable/rounded_bg"
+          android:layout_centerHorizontal="true"
+          android:singleLine="true"
+          android:textColorHint="@color/black" />
 
-</RelativeLayout>
+        <Button
+          android:id="@+id/btnMakeAccount"
+          android:layout_width="@dimen/_240sdp"
+          android:layout_height="wrap_content"
+          android:layout_marginStart="20dp"
+          android:layout_marginTop="@dimen/_20sdp"
+          android:backgroundTint="#32a852"
+          android:textSize="15dp"
+          android:textStyle="bold"
+          android:text="Buat Akun"
+          android:layout_centerHorizontal="true"
+          android:textColor="@color/white"
+          android:textAllCaps="true"
+          />
+
+        <Button
+          android:id="@+id/btnBackToLogin"
+          android:layout_width="@dimen/_240sdp"
+          android:layout_height="wrap_content"
+          android:layout_marginStart="20dp"
+          android:layout_marginTop="@dimen/_5sdp"
+          android:layout_marginBottom="@dimen/_20sdp"
+          android:backgroundTint="#2448bd"
+          android:text="Kembali"
+          android:onClick="Kembali"
+          android:textStyle="bold"
+          android:textSize="15dp"
+          android:layout_centerHorizontal="true"
+          android:textColor="@color/white"
+          android:textAllCaps="true" />
+
+      </LinearLayout>
+
+  </RelativeLayout>
