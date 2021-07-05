@@ -13,6 +13,7 @@
     android:layout_gravity="top"
     android:background="@drawable/table_content_cell_bg"
     android:text="Kode"
+    android:textColor="@color/black"
     android:textAlignment="center"
     android:textSize="@dimen/_15ssp" />
 
@@ -24,6 +25,7 @@
     android:layout_gravity="top"
     android:background="@drawable/table_content_cell_bg"
     android:text="Program"
+    android:textColor="@color/black"
     android:textAlignment="center"
     android:textSize="@dimen/_15ssp" />
 
@@ -35,6 +37,7 @@
     android:layout_gravity="top"
     android:background="@drawable/table_content_cell_bg"
     android:text="Tanggal"
+    android:textColor="@color/black"
     android:textAlignment="center"
     android:textSize="@dimen/_15ssp" />
 
@@ -46,6 +49,7 @@
     android:layout_gravity="top"
     android:background="@drawable/table_content_cell_bg"
     android:text="Tempat"
+    android:textColor="@color/black"
     android:textAlignment="center"
     android:textSize="@dimen/_15ssp" />
 

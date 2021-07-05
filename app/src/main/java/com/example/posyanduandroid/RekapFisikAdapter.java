@@ -14,9 +14,9 @@ import java.util.ArrayList;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class JadwalAdapter extends RecyclerView.Adapter<JadwalAdapter.ListViewHolder> {
+public class RekapFisikAdapter extends RecyclerView.Adapter<RekapFisikAdapter.ListViewHolder> {
 
-  private ArrayList<JadwalModel> dataList;
+  private ArrayList<RekapFisikModel> dataList;
   private OnItemClickListener mListener;
   private Context mContext;
 
@@ -28,7 +28,7 @@ public class JadwalAdapter extends RecyclerView.Adapter<JadwalAdapter.ListViewHo
     mListener = listener;
   }
 
-  public JadwalAdapter(Context mContext, ArrayList<JadwalModel> dataList) {
+  public RekapFisikAdapter(Context mContext, ArrayList<RekapFisikModel> dataList) {
     this.mContext = mContext;
     this.dataList = dataList;
   }
@@ -36,7 +36,7 @@ public class JadwalAdapter extends RecyclerView.Adapter<JadwalAdapter.ListViewHo
   @Override
   public ListViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
     LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
-    View view = layoutInflater.inflate(R.layout.jadwal_list, parent, false);
+    View view = layoutInflater.inflate(R.layout.rekapfisikbalita_list, parent, false);
     return new ListViewHolder(view, mListener);
   }
 

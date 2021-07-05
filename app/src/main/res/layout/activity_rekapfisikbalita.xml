@@ -5,12 +5,24 @@
   android:layout_width="match_parent"
   android:layout_height="match_parent"
   android:orientation="vertical"
-  tools:context=".JadwalActivity">
+  tools:context=".RekapFisikActivity"
+  android:background="@color/primary">
+
+  <TextView
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/_70sdp"
+    android:text="REKAP FISIK BALITA"
+    android:textStyle="bold"
+    android:layout_gravity="center"
+    android:gravity="center"
+    android:textColor="@color/black"
+    android:textSize="@dimen/_28ssp"
+    android:background="@color/white"/>
 
   <androidx.recyclerview.widget.RecyclerView
     android:id="@+id/rv_jadwal"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    tools:listitem="@layout/jadwal_list" />
+    tools:listitem="@layout/rekapfisikbalita_list" />
 
 </LinearLayout>

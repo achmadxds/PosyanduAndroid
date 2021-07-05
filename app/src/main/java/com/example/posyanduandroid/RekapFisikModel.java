@@ -2,14 +2,14 @@ package com.example.posyanduandroid;
 
 import java.util.Date;
 
-public class JadwalModel {
+public class RekapFisikModel {
 
   private String kode, program, tempat;
   private Date tanggal;
 
-  public JadwalModel(){}
+  public RekapFisikModel(){}
 
-  public JadwalModel(String kode, String program, Date tanggal, String tempat) {
+  public RekapFisikModel(String kode, String program, Date tanggal, String tempat) {
     this.kode = kode;
     this.program = program;
     this.tanggal = tanggal;

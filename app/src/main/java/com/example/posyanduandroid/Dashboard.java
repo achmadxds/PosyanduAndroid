@@ -2,13 +2,9 @@ package com.example.posyanduandroid;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
@@ -36,9 +32,9 @@ public class Dashboard extends AppCompatActivity {
   private void addData() {
     arrayList = new ArrayList<>();
     arrayList.add(new DashboardModel("Beranda", R.drawable.beranda, Beranda.class));
-    arrayList.add(new DashboardModel("Layanan", R.drawable.beranda, JadwalActivity.class));
-    arrayList.add(new DashboardModel("Konsultasi", R.drawable.konsultasi, JadwalActivity.class));
-    arrayList.add(new DashboardModel("Antrian", R.drawable.antrian, JadwalActivity.class));
+    arrayList.add(new DashboardModel("Layanan", R.drawable.beranda, RekapFisikActivity.class));
+    arrayList.add(new DashboardModel("Konsultasi", R.drawable.konsultasi, RekapFisikActivity.class));
+    arrayList.add(new DashboardModel("Antrian", R.drawable.antrian, Antrian.class));
     arrayList.add(new DashboardModel("Rekap Balita", R.drawable.rekap_bayi, Rekap.class));
 
     DashboardAdapter adapter = new DashboardAdapter(this, arrayList);
