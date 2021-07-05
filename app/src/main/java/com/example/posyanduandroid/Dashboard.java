@@ -35,11 +35,11 @@ public class Dashboard extends AppCompatActivity {
 
   private void addData() {
     arrayList = new ArrayList<>();
-    arrayList.add(new DashboardModel("Beranda", R.drawable.beranda, JadwalActivity.class));
+    arrayList.add(new DashboardModel("Beranda", R.drawable.beranda, Beranda.class));
     arrayList.add(new DashboardModel("Layanan", R.drawable.beranda, JadwalActivity.class));
     arrayList.add(new DashboardModel("Konsultasi", R.drawable.konsultasi, JadwalActivity.class));
     arrayList.add(new DashboardModel("Antrian", R.drawable.antrian, JadwalActivity.class));
-    arrayList.add(new DashboardModel("Rekap Balita", R.drawable.rekap_bayi, JadwalActivity.class));
+    arrayList.add(new DashboardModel("Rekap Balita", R.drawable.rekap_bayi, Rekap.class));
 
     DashboardAdapter adapter = new DashboardAdapter(this, arrayList);
     RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(this, 2);
