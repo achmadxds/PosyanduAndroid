@@ -35,6 +35,8 @@ public class Dashboard extends AppCompatActivity {
     arrayList.add(new DashboardModel("Layanan", R.drawable.beranda, RekapFisikActivity.class));
     arrayList.add(new DashboardModel("Konsultasi", R.drawable.konsultasi, RekapFisikActivity.class));
     arrayList.add(new DashboardModel("Antrian", R.drawable.antrian, Antrian.class));
+    arrayList.add(new DashboardModel("Layanan Prog", R.drawable.antrian, Layanan.class));
+    arrayList.add(new DashboardModel("Semua", R.drawable.rekap_bayi, semua.class));
     arrayList.add(new DashboardModel("Rekap Balita", R.drawable.rekap_bayi, Rekap.class));
 
     DashboardAdapter adapter = new DashboardAdapter(this, arrayList);
