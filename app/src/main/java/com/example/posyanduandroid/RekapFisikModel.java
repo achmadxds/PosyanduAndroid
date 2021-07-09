@@ -4,47 +4,46 @@ import java.util.Date;
 
 public class RekapFisikModel {
 
-  private String kode, program, tempat;
-  private Date tanggal;
+  private String nama, berat, panjang, tanggal;
 
   public RekapFisikModel(){}
 
-  public RekapFisikModel(String kode, String program, Date tanggal, String tempat) {
-    this.kode = kode;
-    this.program = program;
-    this.tanggal = tanggal;
-    this.tempat = tempat;
+  public String getNama() {
+    return nama;
   }
 
-  public String getKode() {
-    return kode;
+  public void setNama(String nama) {
+    this.nama = nama;
   }
 
-  public void setKode(String kode) {
-    this.kode = kode;
+  public String getBerat() {
+    return berat;
   }
 
-  public String getProgram() {
-    return program;
+  public void setBerat(String berat) {
+    this.berat = berat;
   }
 
-  public void setProgram(String program) {
-    this.program = program;
+  public String getPanjang() {
+    return panjang;
   }
 
-  public String getTempat() {
-    return tempat;
+  public void setPanjang(String panjang) {
+    this.panjang = panjang;
   }
 
-  public void setTempat(String tempat) {
-    this.tempat = tempat;
-  }
-
-  public Date getTanggal() {
+  public String getTanggal() {
     return tanggal;
   }
 
-  public void setTanggal(Date tanggal) {
+  public void setTanggal(String tanggal) {
     this.tanggal = tanggal;
+  }
+
+  public RekapFisikModel(String nama, String berat, String tanggal, String panjang) {
+    this.nama = nama;
+    this.berat = berat;
+    this.tanggal = tanggal;
+    this.panjang = panjang;
   }
 }

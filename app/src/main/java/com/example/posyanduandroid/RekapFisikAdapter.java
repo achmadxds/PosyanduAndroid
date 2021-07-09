@@ -1,6 +1,5 @@
 package com.example.posyanduandroid;
 
-import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,7 +7,8 @@ import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.text.SimpleDateFormat;
+import com.androidnetworking.interfaces.JSONArrayRequestListener;
+
 import java.util.ArrayList;
 
 import butterknife.BindView;
@@ -18,7 +18,7 @@ public class RekapFisikAdapter extends RecyclerView.Adapter<RekapFisikAdapter.Li
 
   private ArrayList<RekapFisikModel> dataList;
   private OnItemClickListener mListener;
-  private Context mContext;
+  private JSONArrayRequestListener mContext;
 
   public interface OnItemClickListener {
     void onItemClick(int position);
@@ -28,7 +28,7 @@ public class RekapFisikAdapter extends RecyclerView.Adapter<RekapFisikAdapter.Li
     mListener = listener;
   }
 
-  public RekapFisikAdapter(Context mContext, ArrayList<RekapFisikModel> dataList) {
+  public RekapFisikAdapter(JSONArrayRequestListener mContext, ArrayList<RekapFisikModel> dataList) {
     this.mContext = mContext;
     this.dataList = dataList;
   }
@@ -36,42 +36,34 @@ public class RekapFisikAdapter extends RecyclerView.Adapter<RekapFisikAdapter.Li
   @Override
   public ListViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
     LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
-    View view = layoutInflater.inflate(R.layout.rekapfisikbalita_list, parent, false);
+    View view = layoutInflater.inflate(R.layout.activity_rekapfisikbalita_list, parent, false);
     return new ListViewHolder(view, mListener);
   }
 
   @Override
   public void onBindViewHolder(ListViewHolder holder, int position) {
     if (holder.getAdapterPosition() == 0) {
-      holder.tv_tanggal.setBackgroundResource(R.drawable.table_header_cell_bg);
-      holder.tv_kode.setBackgroundResource(R.drawable.table_header_cell_bg);
-      holder.tv_program.setBackgroundResource(R.drawable.table_header_cell_bg);
-      holder.tv_tempat.setBackgroundResource(R.drawable.table_header_cell_bg);
+      holder.panjangRekapFisikBalita.setBackgroundResource(R.drawable.table_header_cell_bg);
+      holder.namaRekapFisikBalita.setBackgroundResource(R.drawable.table_header_cell_bg);
+      holder.beratRekapFisikBalita.setBackgroundResource(R.drawable.table_header_cell_bg);
+      holder.tanggalRekapFisikBalita.setBackgroundResource(R.drawable.table_header_cell_bg);
 
-      holder.tv_kode.setText("Kode");
-      holder.tv_program.setText("Program");
-      holder.tv_tempat.setText("Tempat");
-
-      String pattern = "yyyy-MM-dd";
-      SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
-      String date = simpleDateFormat.format(dataList.get(position).getTanggal());
-      holder.tv_tanggal.setText("Tanggal");
+      holder.namaRekapFisikBalita.setText("Nama");
+      holder.beratRekapFisikBalita.setText("Berat");
+      holder.tanggalRekapFisikBalita.setText("Tanggal");
+      holder.panjangRekapFisikBalita.setText("Panjang");
 
     } else {
-      holder.tv_tanggal.setBackgroundResource(R.drawable.table_content_cell_bg);
-      holder.tv_kode.setBackgroundResource(R.drawable.table_content_cell_bg);
-      holder.tv_program.setBackgroundResource(R.drawable.table_content_cell_bg);
-      holder.tv_tempat.setBackgroundResource(R.drawable.table_content_cell_bg);
+      holder.panjangRekapFisikBalita.setBackgroundResource(R.drawable.table_content_cell_bg);
+      holder.namaRekapFisikBalita.setBackgroundResource(R.drawable.table_content_cell_bg);
+      holder.beratRekapFisikBalita.setBackgroundResource(R.drawable.table_content_cell_bg);
+      holder.tanggalRekapFisikBalita.setBackgroundResource(R.drawable.table_content_cell_bg);
 
       int pos = position -1;
-      holder.tv_kode.setText(dataList.get(pos).getKode());
-      holder.tv_program.setText(dataList.get(pos).getProgram());
-      holder.tv_tempat.setText(dataList.get(pos).getTempat());
-
-      String pattern = "yyyy-MM-dd";
-      SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
-      String date = simpleDateFormat.format(dataList.get(pos).getTanggal());
-      holder.tv_tanggal.setText(date);
+      holder.namaRekapFisikBalita.setText(dataList.get(pos).getNama());
+      holder.beratRekapFisikBalita.setText(dataList.get(pos).getBerat());
+      holder.tanggalRekapFisikBalita.setText(dataList.get(pos).getTanggal());
+      holder.panjangRekapFisikBalita.setText(dataList.get(pos).getPanjang());
     }
 
   }
@@ -84,13 +76,13 @@ public class RekapFisikAdapter extends RecyclerView.Adapter<RekapFisikAdapter.Li
   public class ListViewHolder extends RecyclerView.ViewHolder {
 
     @BindView(R.id.tv_kode_jadwal)
-    TextView tv_kode;
+    TextView namaRekapFisikBalita;
     @BindView(R.id.tv_program_jadwal)
-    TextView tv_program;
+    TextView beratRekapFisikBalita;
     @BindView(R.id.tv_tempat_jadwal)
-    TextView tv_tempat;
+    TextView tanggalRekapFisikBalita;
     @BindView(R.id.tv_tanggal_jadwal)
-    TextView tv_tanggal;
+    TextView panjangRekapFisikBalita;
 
     public ListViewHolder(View itemView, final OnItemClickListener listener) {
       super(itemView);

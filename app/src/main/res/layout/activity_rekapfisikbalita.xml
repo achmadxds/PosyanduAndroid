@@ -23,6 +23,6 @@
     android:id="@+id/rv_jadwal"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    tools:listitem="@layout/rekapfisikbalita_list" />
+    tools:listitem="@layout/activity_rekapfisikbalita_list" />
 
 </LinearLayout>
