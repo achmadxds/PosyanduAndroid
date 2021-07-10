@@ -5,10 +5,13 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.androidnetworking.AndroidNetworking;
 
 public class Login extends AppCompatActivity {
   private EditText username, password;
@@ -26,7 +29,19 @@ public class Login extends AppCompatActivity {
     loginButton.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {
+        String usm = username.getText().toString().trim();
+        String pswd = password.getText().toString().trim();
 
+        if(usm.isEmpty() && pswd.isEmpty()) {
+          Toast.makeText(getApplicationContext(),"Mohon isi hadulu!",Toast.LENGTH_SHORT).show();
+        }
+
+        if(!usm.isEmpty() && !pswd.isEmpty()) {
+          Intent i = new Intent(Login.this, Dashboard.class);
+          startActivity(i);
+          finish();
+        }
+//        Toast.makeText(getApplicationContext(),usm,Toast.LENGTH_SHORT).show();
       }
     });
   }
