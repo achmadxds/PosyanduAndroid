@@ -48,6 +48,7 @@ public class LayananAdapter extends RecyclerView.Adapter<LayananAdapter.ListView
   @Override
   public void onBindViewHolder(LayananAdapter.ListViewHolder holder, int position) {
     holder.tv_dashboard.setText(dataList.get(position).getTitle());
+    holder.img_dashboard.setImageResource(dataList.get(position).getImage());
   }
 
   @Override

@@ -1,8 +1,11 @@
 package com.example.posyanduandroid;
 
+import android.app.Activity;
+
 public class LayananModel {
 
   private String title;
+  private int image;
   private Class activity;
 
   public LayananModel() {}
@@ -15,6 +18,14 @@ public class LayananModel {
     this.title = title;
   }
 
+  public int getImage() {
+    return image;
+  }
+
+  public void setImage(int image) {
+    this.image = image;
+  }
+
   public Class getActivity() {
     return activity;
   }
@@ -23,8 +34,9 @@ public class LayananModel {
     this.activity = activity;
   }
 
-  public LayananModel(String title, Class activity) {
+  public LayananModel(String title, int image, Class antrian) {
     this.title = title;
-    this.activity = activity;
+    this.image = image;
+    this.activity = antrian;
   }
 }

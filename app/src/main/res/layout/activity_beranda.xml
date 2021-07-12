@@ -4,12 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/primary"
     tools:context=".Beranda">
 
     <ImageView
         android:id="@+id/image1"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
+        android:layout_width="@dimen/_120sdp"
+        android:layout_height="@dimen/_110sdp"
         android:layout_centerHorizontal="true"
         android:layout_marginVertical="70dp"
         android:src="@drawable/posyandu" />
@@ -18,34 +19,37 @@
         android:id="@+id/textView7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginVertical="205dp"
+      android:layout_marginTop="@dimen/_170sdp"
         android:layout_marginLeft="20dp"
         android:shadowColor="#EB38CF1E"
         android:shadowDx="1"
         android:shadowDy="1"
         android:shadowRadius="2"
-        android:text="POSYANDU DERSALAM :"
+        android:text="POSYANDU BACIN :"
+        android:textSize="@dimen/_13ssp"
+        android:textStyle="bold"
         android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
 
     <TextView
         android:id="@+id/textViewVisi"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginVertical="225dp"
+        android:layout_marginTop="@dimen/_189sdp"
         android:layout_marginLeft="20dp"
         android:text="Pogram Layanan : \n
         1. Check Kesehatan Rutin dibeberapa posyandu \n
         2. Pembagian Vitamin kepada anggota posyandu \n
         3. Suntik Imunisasi / Vaksin \n
         4. Cek Kehamilan &amp; Cek Masa Subur"
+        android:textSize="@dimen/_13ssp"
         android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
 
     <Button
         android:id="@+id/btnBack"
-        android:layout_width="wrap_content"
+        android:layout_width="@dimen/_140sdp"
         android:layout_height="wrap_content"
         android:onClick="backtoMenu"
-        android:layout_marginVertical="600dp"
+      android:layout_marginTop="@dimen/_470sdp"
         android:layout_centerHorizontal="true"
         android:backgroundTint="#2196F3"
         android:text="Kembali Ke Menu"
@@ -54,12 +58,12 @@
         tools:ignore="OnClick" />
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="@dimen/_120sdp"
+        android:layout_height="@dimen/_35sdp"
         android:layout_centerHorizontal="true"
         android:layout_marginVertical="680dp"
         android:text=" TIM PKM-PM \n UNIVERSITAS MURIA KUDUS"
         android:textAlignment="center"
-        android:textColor="#0C0C0C"
-        android:textSize="10sp" />
+        android:textColor="@color/black"
+        android:textSize="@dimen/_10ssp" />
 </RelativeLayout>

@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 
@@ -26,6 +27,7 @@ import butterknife.ButterKnife;
 public class Layanan extends AppCompatActivity {
 
   private String TAG = "Layanan";
+  private String MY_PREFS_NAME;
   private ArrayList<LayananModel> arrayList;
 
   @BindView(R.id.rv_layanan)
@@ -58,9 +60,13 @@ public class Layanan extends AppCompatActivity {
           try {
             for (int i = 0; i < response.length(); i++) {
               JSONObject jo = response.getJSONObject(i);
-              arrayList.add(new LayananModel(jo.getString("nama"), Beranda.class));
+              arrayList.add(new LayananModel(jo.getString("nama"), R.drawable.service_health, Antrian.class));
+              SharedPreferences.Editor editor = getSharedPreferences(
+                MY_PREFS_NAME, MODE_PRIVATE).edit();
+              editor.putInt("scoreViewA", 5);
+              editor.putInt("scoreViewB", 12);
+              editor.apply();
             }
-            arrayList.add(new LayananModel(response.getJSONObject(0).getString("nama"), Beranda.class));
           } catch (JSONException e) {
             e.printStackTrace();
           }
