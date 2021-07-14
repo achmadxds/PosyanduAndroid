@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -25,10 +26,11 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class Layanan extends AppCompatActivity {
-
   private String TAG = "Layanan";
-  private String MY_PREFS_NAME;
+  private String MY_PREFS_NAME = "MyPrefs";
   private ArrayList<LayananModel> arrayList;
+
+  SharedPreferences sharedpreferences;
 
   @BindView(R.id.rv_layanan)
   RecyclerView recyclerView;
@@ -50,6 +52,8 @@ public class Layanan extends AppCompatActivity {
 
     arrayList = new ArrayList<>();
 
+    sharedpreferences = getSharedPreferences(MY_PREFS_NAME, Context.MODE_PRIVATE);
+
     AndroidNetworking.get("https://posyandukudus.000webhostapp.com/API/api_layanan.php")
       .setPriority(Priority.LOW)
       .build()
@@ -57,15 +61,13 @@ public class Layanan extends AppCompatActivity {
         @Override
         public void onResponse(JSONArray response) {
           pd.dismiss();
+          SharedPreferences.Editor editor = sharedpreferences.edit();
           try {
             for (int i = 0; i < response.length(); i++) {
               JSONObject jo = response.getJSONObject(i);
+              editor.putString("NameKey", jo.getString("kode"));
+              editor.commit();
               arrayList.add(new LayananModel(jo.getString("nama"), R.drawable.service_health, Antrian.class));
-              SharedPreferences.Editor editor = getSharedPreferences(
-                MY_PREFS_NAME, MODE_PRIVATE).edit();
-              editor.putInt("scoreViewA", 5);
-              editor.putInt("scoreViewB", 12);
-              editor.apply();
             }
           } catch (JSONException e) {
             e.printStackTrace();
@@ -85,5 +87,13 @@ public class Layanan extends AppCompatActivity {
     RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(this, 2);
     recyclerView.setLayoutManager(mLayoutManager);
     recyclerView.setAdapter(adapter);
+
+    adapter.setOnItemClickListener(new LayananAdapter.OnItemClickListener() {
+      @Override
+      public void onItemClick(int position) {
+        Intent intent = new Intent(getApplicationContext(), arrayList.get(position).getActivity());
+        startActivity(intent);
+      }
+    });
   }
 }
