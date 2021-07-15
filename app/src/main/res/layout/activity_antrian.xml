@@ -25,6 +25,24 @@
     tools:layout_editor_absoluteX="16dp"
     tools:layout_editor_absoluteY="16dp" />
 
+  <TextView
+    android:gravity="center"
+    android:id="@+id/NamaLayanans"
+    style="@style/TextAppearance.AppCompat.Small"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/_40ssp"
+    android:layout_centerHorizontal="true"
+    android:layout_gravity="center"
+    android:layout_marginTop="@dimen/_65sdp"
+    android:textColor="@color/black"
+    android:text=""
+    android:textAllCaps="true"
+    android:textSize="@dimen/_30ssp"
+    android:textStyle="bold"
+    tools:ignore="MissingConstraints"
+    tools:layout_editor_absoluteX="16dp"
+    tools:layout_editor_absoluteY="16dp" />
+
   <GridLayout
     android:id="@+id/mainGrid"
     android:layout_marginTop="@dimen/_130sdp"

@@ -5,6 +5,7 @@ import android.app.Activity;
 public class LayananModel {
 
   private String title;
+  private String KodeJadwal;
   private int image;
   private Class activity;
 
@@ -34,9 +35,18 @@ public class LayananModel {
     this.activity = activity;
   }
 
-  public LayananModel(String title, int image, Class antrian) {
+  public String getKodeJadwal() {
+    return KodeJadwal;
+  }
+
+  public void setKodeJadwal(String kodeJadwal) {
+    KodeJadwal = kodeJadwal;
+  }
+
+  public LayananModel(String title, int image, Class antrian, String kdJadwal) {
     this.title = title;
     this.image = image;
     this.activity = antrian;
+    this.KodeJadwal = kdJadwal;
   }
 }

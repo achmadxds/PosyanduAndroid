@@ -61,13 +61,10 @@ public class Layanan extends AppCompatActivity {
         @Override
         public void onResponse(JSONArray response) {
           pd.dismiss();
-          SharedPreferences.Editor editor = sharedpreferences.edit();
           try {
             for (int i = 0; i < response.length(); i++) {
               JSONObject jo = response.getJSONObject(i);
-              editor.putString("NameKey", jo.getString("kode"));
-              editor.commit();
-              arrayList.add(new LayananModel(jo.getString("nama"), R.drawable.service_health, Antrian.class));
+              arrayList.add(new LayananModel(jo.getString("nama"), R.drawable.service_health, Antrian.class, jo.getString("kodeJadwal")));
             }
           } catch (JSONException e) {
             e.printStackTrace();
@@ -87,10 +84,14 @@ public class Layanan extends AppCompatActivity {
     RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(this, 2);
     recyclerView.setLayoutManager(mLayoutManager);
     recyclerView.setAdapter(adapter);
+    SharedPreferences.Editor editor = sharedpreferences.edit();
 
     adapter.setOnItemClickListener(new LayananAdapter.OnItemClickListener() {
       @Override
       public void onItemClick(int position) {
+        editor.putString("KodeKey", arrayList.get(position).getKodeJadwal());
+        editor.putString("NameKey", arrayList.get(position).getTitle());
+        editor.commit();
         Intent intent = new Intent(getApplicationContext(), arrayList.get(position).getActivity());
         startActivity(intent);
       }
