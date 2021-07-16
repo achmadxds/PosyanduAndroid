@@ -51,7 +51,6 @@ public class Layanan extends AppCompatActivity {
     pd.show();
 
     arrayList = new ArrayList<>();
-
     sharedpreferences = getSharedPreferences(MY_PREFS_NAME, Context.MODE_PRIVATE);
 
     AndroidNetworking.get("https://posyandukudus.000webhostapp.com/API/api_layanan.php")
@@ -64,7 +63,8 @@ public class Layanan extends AppCompatActivity {
           try {
             for (int i = 0; i < response.length(); i++) {
               JSONObject jo = response.getJSONObject(i);
-              arrayList.add(new LayananModel(jo.getString("nama"), R.drawable.service_health, Antrian.class, jo.getString("kodeJadwal")));
+              Log.d(TAG, "onResponse: " + jo);
+              arrayList.add(new LayananModel(jo.getString("nama"), R.drawable.service_health, Antrian.class, jo.getString("kodeJadwal"), jo.getString("parentAntrian"), jo.getString("idAntrian"), jo.getString("jamParent")));
             }
           } catch (JSONException e) {
             e.printStackTrace();
@@ -91,6 +91,9 @@ public class Layanan extends AppCompatActivity {
       public void onItemClick(int position) {
         editor.putString("KodeKey", arrayList.get(position).getKodeJadwal());
         editor.putString("NameKey", arrayList.get(position).getTitle());
+        editor.putString("ParentAntrian", arrayList.get(position).getParentAntrian());
+        editor.putString("idAntrian", arrayList.get(position).getIdAntrian());
+        editor.putString("jamParent", arrayList.get(position).getJamParent());
         editor.commit();
         Intent intent = new Intent(getApplicationContext(), arrayList.get(position).getActivity());
         startActivity(intent);

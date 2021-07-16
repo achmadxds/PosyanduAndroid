@@ -6,6 +6,9 @@ public class LayananModel {
 
   private String title;
   private String KodeJadwal;
+  private String parentAntrian;
+  private String idAntrian;
+  private String jamParent;
   private int image;
   private Class activity;
 
@@ -43,10 +46,37 @@ public class LayananModel {
     KodeJadwal = kodeJadwal;
   }
 
-  public LayananModel(String title, int image, Class antrian, String kdJadwal) {
+  public String getParentAntrian() {
+    return parentAntrian;
+  }
+
+  public void setParentAntrian(String parentAntrian) {
+    this.parentAntrian = parentAntrian;
+  }
+
+  public String getIdAntrian() {
+    return idAntrian;
+  }
+
+  public void setIdAntrian(String idAntrian) {
+    this.idAntrian = idAntrian;
+  }
+
+  public String getJamParent() {
+    return jamParent;
+  }
+
+  public void setJamParent(String jamParent) {
+    this.jamParent = jamParent;
+  }
+
+  public LayananModel(String title, int image, Class antrian, String kdJadwal, String parentAntrian, String idAntrian, String jamParent) {
     this.title = title;
     this.image = image;
     this.activity = antrian;
     this.KodeJadwal = kdJadwal;
+    this.parentAntrian = parentAntrian;
+    this.idAntrian = idAntrian;
+    this.jamParent = jamParent;
   }
 }

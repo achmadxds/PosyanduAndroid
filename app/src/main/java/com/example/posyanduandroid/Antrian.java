@@ -1,33 +1,33 @@
 package com.example.posyanduandroid;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.ProgressDialog;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.common.Priority;
 import com.androidnetworking.error.ANError;
-import com.androidnetworking.interfaces.JSONArrayRequestListener;
 import com.androidnetworking.interfaces.JSONObjectRequestListener;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import butterknife.BindView;
-import butterknife.BindViews;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 
 public class Antrian extends AppCompatActivity {
 
   Integer antrianNomor;
   private String TAG = "Antrian";
   SharedPreferences mPrefs;
+  Date lastDate;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -39,12 +39,51 @@ public class Antrian extends AppCompatActivity {
     String name = mPrefs.getString("NameKey", "");
     nmLayanID.setText(name);
 
+    Button btn = findViewById(R.id.btnGetAntrian);
+    String prntAntrian = mPrefs.getString("ParentAntrian", "");
+    String idAnggota = mPrefs.getString("idAnggotaLogin", "");
+    String KodeJadwal = mPrefs.getString("KodeKey", "");
+    String idAntrian = mPrefs.getString("idAntrian", "");
+    String jamParent = mPrefs.getString("jamParent", "");
+
+    Date time = Calendar.getInstance().getTime();
+    SimpleDateFormat simpleDateFormat = new SimpleDateFormat("hh:mm:ss");
+    String times = simpleDateFormat.format(time);
+
+    btn.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        AndroidNetworking.post("https://posyandukudus.000webhostapp.com/API/api_antrian_input.php")
+          .addBodyParameter("kdJadwal", KodeJadwal)
+          .addBodyParameter("idAnggota", idAnggota)
+          .addBodyParameter("parentAntrian", idAntrian)
+          .addBodyParameter("jam", jamParent)
+          .addBodyParameter("status", String.valueOf(1))
+          .setPriority(Priority.MEDIUM)
+          .build()
+          .getAsJSONObject(new JSONObjectRequestListener() {
+            @Override
+            public void onResponse(JSONObject response) {
+              Log.d(TAG, "onResponse: " + response);
+            }
+
+            @Override
+            public void onError(ANError anError) {
+              Log.d(TAG, "onError: " + anError);
+            }
+          });
+      }
+    });
+
     GetFirst(mPrefs);
   }
 
   public void GetFirst(SharedPreferences some) {
     String str = some.getString("KodeKey", "");
-    Log.d(TAG, "onCreate: " + str);
+
+    ProgressDialog pd = new ProgressDialog(Antrian.this);
+    pd.setMessage("loading...");
+    pd.show();
 
     AndroidNetworking.post("https://posyandukudus.000webhostapp.com/API/api_antrian.php")
       .addBodyParameter("inputKodeJadwal", str)
@@ -53,8 +92,11 @@ public class Antrian extends AppCompatActivity {
       .getAsJSONObject(new JSONObjectRequestListener() {
         @Override
         public void onResponse(JSONObject response) {
+          pd.dismiss();
           try {
-            antrianNomor = response.getInt("maxUrut");
+            antrianNomor = response.getInt("maxUrut");;
+            SimpleDateFormat dateFormat = new SimpleDateFormat("hmmaa");
+//            lastDate = dateFormat.parse(response.getString("jam"));
             TextView nomorUruts = findViewById(R.id.valueIncrement);
             nomorUruts.setText(String.valueOf(antrianNomor));
           } catch (JSONException e) {
@@ -67,13 +109,5 @@ public class Antrian extends AppCompatActivity {
 
         }
       });
-  }
-
-
-  public void IncrementValue(View view) {
-    antrianNomor++;
-//
-    TextView valueInc = (TextView) findViewById(R.id.valueIncrement);
-    valueInc.setText(String.valueOf(antrianNomor));
   }
 }

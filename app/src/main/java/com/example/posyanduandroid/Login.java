@@ -1,6 +1,8 @@
 package com.example.posyanduandroid;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -26,6 +28,8 @@ public class Login extends AppCompatActivity {
   private EditText username, password;
   private Button loginButton;
   private String TAG = "Login";
+  private String MY_PREFS_NAME = "MyPrefs";
+  SharedPreferences sharedpreferences;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -35,12 +39,14 @@ public class Login extends AppCompatActivity {
     username = findViewById(R.id.uName);
     password = findViewById(R.id.passwords);
     loginButton = findViewById(R.id.btnLogin);
+    sharedpreferences = getSharedPreferences(MY_PREFS_NAME, Context.MODE_PRIVATE);
 
     loginButton.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {
         String usm = username.getText().toString().trim();
         String pswd = password.getText().toString().trim();
+        SharedPreferences.Editor editor = sharedpreferences.edit();
 
         if(usm.isEmpty() && pswd.isEmpty()) {
           Toast.makeText(getApplicationContext(),"Mohon isi hadulu!",Toast.LENGTH_SHORT).show();
@@ -55,6 +61,12 @@ public class Login extends AppCompatActivity {
             .getAsJSONObject(new JSONObjectRequestListener() {
               @Override
               public void onResponse(JSONObject response) {
+                try {
+                  editor.putString("idAnggotaLogin", response.getString("idPengguna"));
+                  editor.commit();
+                } catch (JSONException e) {
+                  e.printStackTrace();
+                }
                 Intent i = new Intent(Login.this, Dashboard.class);
                 startActivity(i);
                 finish();
