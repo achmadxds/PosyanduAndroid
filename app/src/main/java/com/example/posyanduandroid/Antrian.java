@@ -18,6 +18,7 @@ import com.androidnetworking.interfaces.JSONObjectRequestListener;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -46,10 +47,6 @@ public class Antrian extends AppCompatActivity {
     String idAntrian = mPrefs.getString("idAntrian", "");
     String jamParent = mPrefs.getString("jamParent", "");
 
-    Date time = Calendar.getInstance().getTime();
-    SimpleDateFormat simpleDateFormat = new SimpleDateFormat("hh:mm:ss");
-    String times = simpleDateFormat.format(time);
-
     btn.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {
@@ -59,6 +56,7 @@ public class Antrian extends AppCompatActivity {
           .addBodyParameter("parentAntrian", idAntrian)
           .addBodyParameter("jam", jamParent)
           .addBodyParameter("status", String.valueOf(1))
+          .addBodyParameter("noUrut", String.valueOf(antrianNomor))
           .setPriority(Priority.MEDIUM)
           .build()
           .getAsJSONObject(new JSONObjectRequestListener() {

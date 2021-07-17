@@ -29,7 +29,7 @@ public class Login extends AppCompatActivity {
   private Button loginButton;
   private String TAG = "Login";
   private String MY_PREFS_NAME = "MyPrefs";
-  SharedPreferences sharedpreferences;
+  private SharedPreferences sharedpreferences;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -63,6 +63,7 @@ public class Login extends AppCompatActivity {
               public void onResponse(JSONObject response) {
                 try {
                   editor.putString("idAnggotaLogin", response.getString("idPengguna"));
+                  editor.putString("jenisUserLogin", response.getString("jenis"));
                   editor.commit();
                 } catch (JSONException e) {
                   e.printStackTrace();

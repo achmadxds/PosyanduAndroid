@@ -29,19 +29,23 @@
         </TextView>
 
         <EditText
+          android:id="@+id/uniquecode"
           android:layout_width="@dimen/_240sdp"
           android:layout_height="@dimen/_33sdp"
+          android:paddingStart="@dimen/_12sdp"
           android:layout_marginStart="@dimen/_15sdp"
           android:layout_marginTop="@dimen/_20sdp"
           android:layout_marginEnd="20dp"
           android:paddingLeft="10dp"
-          android:hint="Kode Unik"
+          android:hint="Kode Unik Kamu..."
           android:background="@drawable/rounded_bg"
           android:layout_centerHorizontal="true"
           android:singleLine="true"
           android:textColorHint="@color/black" />
 
         <EditText
+          android:visibility="gone"
+          android:id="@+id/daftarUsername"
           android:layout_width="@dimen/_240sdp"
           android:layout_height="@dimen/_33sdp"
           android:paddingLeft="10dp"
@@ -55,6 +59,8 @@
           android:textColorHint="@color/black" />
 
         <EditText
+          android:visibility="gone"
+          android:id="@+id/daftarPassword"
           android:layout_width="@dimen/_240sdp"
           android:layout_height="@dimen/_33sdp"
           android:layout_marginStart="@dimen/_15sdp"
@@ -68,6 +74,8 @@
           android:textColorHint="@color/black" />
 
         <EditText
+          android:visibility="gone"
+          android:id="@+id/daftarRePassword"
           android:layout_width="@dimen/_240sdp"
           android:layout_height="@dimen/_33sdp"
           android:layout_marginStart="@dimen/_15sdp"
@@ -81,6 +89,7 @@
           android:textColorHint="@color/black" />
 
         <Button
+          android:visibility="gone"
           android:id="@+id/btnMakeAccount"
           android:layout_width="@dimen/_240sdp"
           android:layout_height="wrap_content"

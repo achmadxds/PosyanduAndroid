@@ -1,6 +1,7 @@
 package com.example.posyanduandroid;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -30,12 +31,26 @@ public class Dashboard extends AppCompatActivity {
   }
 
   private void addData() {
+    SharedPreferences mPrefs = getSharedPreferences("MyPrefs",0);
+    String jenis = mPrefs.getString("jenisUserLogin", "");
+
     arrayList = new ArrayList<>();
     arrayList.add(new DashboardModel("Beranda", R.drawable.beranda, Beranda.class));
     arrayList.add(new DashboardModel("Layanan", R.drawable.beranda, Layanan.class));
     arrayList.add(new DashboardModel("Konsultasi", R.drawable.konsultasi, RekapFisikActivity.class));
     arrayList.add(new DashboardModel("Antrian", R.drawable.antrian, Antrian.class));
-    arrayList.add(new DashboardModel("Rekap Balita", R.drawable.rekap_bayi, Rekap.class));
+
+    switch (jenis) {
+      case "Balita":
+        arrayList.add(new DashboardModel("Rekap Balita", R.drawable.rekap_bayi, Rekap.class));
+        break;
+
+      case "Bumil":
+        break;
+
+      case "Lansia":
+        break;
+    }
 
     DashboardAdapter adapter = new DashboardAdapter(this, arrayList);
     RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(this, 2);
