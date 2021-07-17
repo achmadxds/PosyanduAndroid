@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
@@ -25,9 +26,11 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.text.SimpleDateFormat;
+import java.util.Arrays;
 
 public class Registrasi extends AppCompatActivity {
   private String TAG = "Registrasi";
+  private String idPengguna, nmUser, kdUnik;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -40,31 +43,41 @@ public class Registrasi extends AppCompatActivity {
     alertDialog.show();
 
     CheckUniqueCode();
+
   }
 
-  public void RegistrasiAkun() {
-    AndroidNetworking.post("https://posyandukudus.000webhostapp.com/API/api_checkUniqueCode.php")
-      .addBodyParameter("idPengguna", "")
-      .addBodyParameter("nama", "")
-      .addBodyParameter("username", "")
-      .addBodyParameter("password", "")
-      .addBodyParameter("kdUnik", "")
-      .addBodyParameter("level", "")
-      .addBodyParameter("status", "")
-      .setPriority(Priority.LOW)
-      .build()
-      .getAsJSONArray(new JSONArrayRequestListener() {
-        @Override
-        public void onResponse(JSONArray response) {
+  public void RegistrasiAkun(EditText usms, EditText pswds, EditText repswds) {
+    String pswd = pswds.getText().toString().trim();
+    String repswd = repswds.getText().toString().trim();
+    if(pswd.equals(repswd)) {
+      Log.d(TAG, "RegistrasiAkun: " + "Sama");
+      AndroidNetworking.post("https://posyandukudus.000webhostapp.com/API/api_registrasi.php")
+        .addBodyParameter("idPengguna", idPengguna)
+        .addBodyParameter("nama", nmUser)
+        .addBodyParameter("username", usms.getText().toString().trim())
+        .addBodyParameter("password", pswds.getText().toString().trim())
+        .addBodyParameter("kdUnik", kdUnik)
+        .addBodyParameter("level", "Anggota")
+        .addBodyParameter("status", "0")
+        .setPriority(Priority.LOW)
+        .build()
+        .getAsJSONArray(new JSONArrayRequestListener() {
+          @Override
+          public void onResponse(JSONArray response) {
 
-        }
+          }
 
-        @Override
-        public void onError(ANError anError) {
+          @Override
+          public void onError(ANError anError) {
 
-        }
-      });
-
+          }
+        });
+    } else {
+      Toast toast = Toast. makeText(getApplicationContext(), "Password Berbeda!", Toast. LENGTH_SHORT); toast. show();
+      Log.d(TAG, "RegistrasiAkun: " + usms.getText().toString().trim());
+      Log.d(TAG, "RegistrasiAkun: " + pswds.getText().toString().trim());
+      Log.d(TAG, "RegistrasiAkun: " + repswds.getText().toString().trim());
+    }
   }
 
   public void CheckUniqueCode() {
@@ -85,7 +98,7 @@ public class Registrasi extends AppCompatActivity {
                 EditText repswd = findViewById(R.id.daftarRePassword);
                 Button btnMakeAccount = findViewById(R.id.btnMakeAccount);
 
-                switch (response.) {
+                switch (response.getString("data")) {
                   case "-":
                     kodeUnixs.setBackgroundResource(R.drawable.rounded_bg);
                     usm.setVisibility(View.GONE);
@@ -95,8 +108,11 @@ public class Registrasi extends AppCompatActivity {
                     break;
 
                   default:
-                    String a = response.getString("data");
-                    Log.i(TAG, "onResponse: " + a);
+                    JSONObject jos = new JSONObject(response.getString("data"));
+                    Log.d(TAG, "onResponse: " + jos);
+                    idPengguna = jos.getString("idAnggota");
+                    kdUnik = jos.getString("kdAnggota");
+                    nmUser = jos.getString("nmAnggota");
                     kodeUnixs.setBackgroundResource(R.drawable.uniquecode_right);
                     usm.setVisibility(View.VISIBLE);
                     pswd.setVisibility(View.VISIBLE);
@@ -104,6 +120,13 @@ public class Registrasi extends AppCompatActivity {
                     btnMakeAccount.setVisibility(View.VISIBLE);
                     break;
                 }
+
+                btnMakeAccount.setOnClickListener(new View.OnClickListener() {
+                  @Override
+                  public void onClick(View v) {
+                    RegistrasiAkun(usm , pswd, repswd);
+                  }
+                });
               } catch (JSONException e) {
                 e.printStackTrace();
               }
