@@ -1,5 +1,6 @@
 package com.example.posyanduandroid;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
@@ -43,14 +44,16 @@ public class Registrasi extends AppCompatActivity {
     alertDialog.show();
 
     CheckUniqueCode();
-
   }
 
   public void RegistrasiAkun(EditText usms, EditText pswds, EditText repswds) {
     String pswd = pswds.getText().toString().trim();
     String repswd = repswds.getText().toString().trim();
     if(pswd.equals(repswd)) {
-      Log.d(TAG, "RegistrasiAkun: " + "Sama");
+      ProgressDialog pd = new ProgressDialog(Registrasi.this);
+      pd.setMessage("loading...");
+      pd.show();
+
       AndroidNetworking.post("https://posyandukudus.000webhostapp.com/API/api_registrasi.php")
         .addBodyParameter("idPengguna", idPengguna)
         .addBodyParameter("nama", nmUser)
@@ -64,7 +67,7 @@ public class Registrasi extends AppCompatActivity {
         .getAsJSONArray(new JSONArrayRequestListener() {
           @Override
           public void onResponse(JSONArray response) {
-
+            pd.dismiss();
           }
 
           @Override
@@ -74,9 +77,6 @@ public class Registrasi extends AppCompatActivity {
         });
     } else {
       Toast toast = Toast. makeText(getApplicationContext(), "Password Berbeda!", Toast. LENGTH_SHORT); toast. show();
-      Log.d(TAG, "RegistrasiAkun: " + usms.getText().toString().trim());
-      Log.d(TAG, "RegistrasiAkun: " + pswds.getText().toString().trim());
-      Log.d(TAG, "RegistrasiAkun: " + repswds.getText().toString().trim());
     }
   }
 

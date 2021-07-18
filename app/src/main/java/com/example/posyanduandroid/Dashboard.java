@@ -38,7 +38,6 @@ public class Dashboard extends AppCompatActivity {
     arrayList.add(new DashboardModel("Beranda", R.drawable.beranda, Beranda.class));
     arrayList.add(new DashboardModel("Layanan", R.drawable.beranda, Layanan.class));
     arrayList.add(new DashboardModel("Konsultasi", R.drawable.konsultasi, RekapFisikActivity.class));
-    arrayList.add(new DashboardModel("Antrian", R.drawable.antrian, Antrian.class));
 
     switch (jenis) {
       case "Balita":

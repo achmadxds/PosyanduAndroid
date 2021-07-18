@@ -14,7 +14,8 @@
     android:roundIcon="@mipmap/ic_launcher_round"
     android:supportsRtl="true"
     android:theme="@style/Theme.PosyanduAndroid">
-    <activity android:name=".Layanan"></activity>
+    <activity android:name=".After_Antrian"></activity>
+    <activity android:name=".Layanan" />
     <activity android:name=".listLayanan" />
     <activity android:name=".Antrian" />
     <activity android:name=".Beranda" />

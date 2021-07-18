@@ -3,6 +3,7 @@ package com.example.posyanduandroid;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
@@ -28,7 +29,6 @@ public class Antrian extends AppCompatActivity {
   Integer antrianNomor;
   private String TAG = "Antrian";
   SharedPreferences mPrefs;
-  Date lastDate;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -62,7 +62,7 @@ public class Antrian extends AppCompatActivity {
           .getAsJSONObject(new JSONObjectRequestListener() {
             @Override
             public void onResponse(JSONObject response) {
-              Log.d(TAG, "onResponse: " + response);
+              CheckHaveAntrian(mPrefs, KodeJadwal, idAnggota);
             }
 
             @Override
@@ -73,7 +73,7 @@ public class Antrian extends AppCompatActivity {
       }
     });
 
-    GetFirst(mPrefs);
+    CheckHaveAntrian(mPrefs, KodeJadwal, idAnggota);
   }
 
   public void GetFirst(SharedPreferences some) {
@@ -92,9 +92,7 @@ public class Antrian extends AppCompatActivity {
         public void onResponse(JSONObject response) {
           pd.dismiss();
           try {
-            antrianNomor = response.getInt("maxUrut");;
-            SimpleDateFormat dateFormat = new SimpleDateFormat("hmmaa");
-//            lastDate = dateFormat.parse(response.getString("jam"));
+            antrianNomor = response.getInt("maxUrut");
             TextView nomorUruts = findViewById(R.id.valueIncrement);
             nomorUruts.setText(String.valueOf(antrianNomor));
           } catch (JSONException e) {
@@ -107,5 +105,53 @@ public class Antrian extends AppCompatActivity {
 
         }
       });
+  }
+
+  public void CheckHaveAntrian(SharedPreferences some, String kdJaduwal, String aidiAnggota) {
+    ProgressDialog pd = new ProgressDialog(Antrian.this);
+    pd.setMessage("loading...");
+    pd.show();
+
+    AndroidNetworking.post("https://posyandukudus.000webhostapp.com/API/api_checkUserGetAntrian.php")
+      .addBodyParameter("kdJadwal", kdJaduwal)
+      .addBodyParameter("idAnggota", aidiAnggota)
+      .setPriority(Priority.LOW)
+      .build()
+      .getAsJSONObject(new JSONObjectRequestListener() {
+        @Override
+        public void onResponse(JSONObject response) {
+          pd.dismiss();
+          try {
+            switch (response.getString("msg")){
+              case "Ada Isinya":
+                SharedPreferences.Editor editor = mPrefs.edit();
+                JSONObject datas = new JSONObject(response.getString("data"));
+                editor.putString("noUruts", datas.getString("noUrut"));
+                editor.putString("jamAntrian", datas.getString("jam"));
+                editor.commit();
+
+                ShowNewIntent();
+                break;
+
+              case "Kosong":
+                GetFirst(some);
+                break;
+            }
+          } catch (JSONException e) {
+            e.printStackTrace();
+          }
+        }
+
+        @Override
+        public void onError(ANError anError) {
+          Log.d(TAG, "onError: " + anError);
+        }
+      });
+  }
+
+  public void ShowNewIntent() {
+    Intent i = new Intent(Antrian.this, After_Antrian.class);
+    startActivity(i);
+    finish();
   }
 }

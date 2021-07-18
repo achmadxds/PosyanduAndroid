@@ -1,5 +1,6 @@
 package com.example.posyanduandroid;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -53,6 +54,10 @@ public class Login extends AppCompatActivity {
         }
 
         if(!usm.isEmpty() && !pswd.isEmpty()) {
+          ProgressDialog pd = new ProgressDialog(Login.this);
+          pd.setMessage("loading...");
+          pd.show();
+
           AndroidNetworking.post("https://posyandukudus.000webhostapp.com/API/api_login.php")
             .addBodyParameter("username", usm)
             .addBodyParameter("password", pswd)
@@ -61,6 +66,7 @@ public class Login extends AppCompatActivity {
             .getAsJSONObject(new JSONObjectRequestListener() {
               @Override
               public void onResponse(JSONObject response) {
+                pd.dismiss();
                 try {
                   editor.putString("idAnggotaLogin", response.getString("idPengguna"));
                   editor.putString("jenisUserLogin", response.getString("jenis"));

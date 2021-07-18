@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  tools:context=".After_Antrian"
+  android:background="@color/primary">
+
+  <TextView
+    android:gravity="center"
+    android:id="@+id/NamaLayananAntrian"
+    style="@style/TextAppearance.AppCompat.Small"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/_40ssp"
+    android:layout_centerHorizontal="true"
+    android:layout_gravity="center"
+    android:layout_marginTop="@dimen/_65sdp"
+    android:textColor="@color/black"
+    android:text="DETAIL ANTRIAN"
+    android:textAllCaps="true"
+    android:textSize="@dimen/_30ssp"
+    android:textStyle="bold"
+    tools:ignore="MissingConstraints"
+    tools:layout_editor_absoluteX="16dp"
+    tools:layout_editor_absoluteY="16dp" />
+
+  <GridLayout
+    android:id="@+id/mainGrid"
+    android:layout_marginTop="@dimen/_130sdp"
+    android:layout_centerHorizontal="true"
+    android:layout_width="@dimen/_200sdp"
+    android:layout_height="@dimen/_200sdp"
+    android:columnCount="1"
+    android:rowCount="2"
+    tools:ignore="MissingConstraints">
+
+    <androidx.cardview.widget.CardView
+      android:id="@+id/kelulusan"
+      android:layout_width="@dimen/_30sdp"
+      android:layout_height="@dimen/_30sdp"
+      android:layout_row="0"
+      android:layout_rowWeight="1"
+      android:layout_column="0"
+      android:layout_columnWeight="1"
+      android:layout_gravity="fill"
+      app:cardCornerRadius="8dp"
+      app:cardElevation="8dp"
+      app:cardUseCompatPadding="true"
+      tools:ignore="OnClick">
+
+      <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginTop="@dimen/_23sdp"
+          android:text="ANTRIAN NOMOR"
+          android:textColor="@color/black"
+          android:textStyle="bold"
+          android:textSize="@dimen/_20ssp"
+          />
+        <TextView
+          android:id="@+id/noUrutss"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="1"
+          android:textSize="@dimen/_28ssp"
+          android:textAlignment="center"
+          android:textColor="@color/black"
+          android:textStyle="bold" />
+
+        <TextView
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginTop="@dimen/_10sdp"
+          android:text="JAM ANTRIAN"
+          android:textColor="@color/black"
+          android:textStyle="bold"
+          android:textSize="@dimen/_20ssp"
+          />
+
+        <TextView
+          android:id="@+id/jamAntrian"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="12:34"
+          android:textSize="@dimen/_28ssp"
+          android:textAlignment="center"
+          android:textColor="@color/black"
+          android:textStyle="bold" />
+      </LinearLayout>
+    </androidx.cardview.widget.CardView>
+  </GridLayout>
+
+  <Button
+    android:id="@+id/Kembalis"
+    android:layout_width="@dimen/_100sdp"
+    android:layout_height="@dimen/_70sdp"
+    android:layout_marginStart="20dp"
+    android:layout_marginTop="@dimen/_370sdp"
+    android:backgroundTint="@color/purple_700"
+    android:textSize="15dp"
+    android:text="Kembali"
+    android:layout_centerHorizontal="true"
+    android:textColor="@color/white"
+    android:textAllCaps="true"
+    />
+
+</RelativeLayout>
