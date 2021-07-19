@@ -14,6 +14,11 @@ public class Rekap extends AppCompatActivity {
         setContentView(R.layout.activity_rekap);
     }
 
+    public void RekapImunisasiBalitaButton(View view) {
+        Intent i = new Intent(Rekap.this, Rekap_Imunisasi_Balita.class);
+        startActivity(i);
+    }
+
     public void RekapFisikBalitaButton(View view) {
         Intent i = new Intent(Rekap.this, RekapFisikActivity.class);
         startActivity(i);

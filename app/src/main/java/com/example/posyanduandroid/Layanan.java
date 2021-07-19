@@ -52,6 +52,7 @@ public class Layanan extends AppCompatActivity {
 
     arrayList = new ArrayList<>();
     sharedpreferences = getSharedPreferences(MY_PREFS_NAME, Context.MODE_PRIVATE);
+    SharedPreferences.Editor editor = sharedpreferences.edit();
 
     AndroidNetworking.get("https://posyandukudus.000webhostapp.com/API/api_layanan.php")
       .setPriority(Priority.LOW)
@@ -63,13 +64,14 @@ public class Layanan extends AppCompatActivity {
           try {
             for (int i = 0; i < response.length(); i++) {
               JSONObject jo = response.getJSONObject(i);
-              Log.d(TAG, "onResponse: " + jo);
-              arrayList.add(new LayananModel(jo.getString("nama"), R.drawable.service_health, Antrian.class, jo.getString("kodeJadwal"), jo.getString("parentAntrian"), jo.getString("idAntrian"), jo.getString("jamParent")));
+              if(jo.getString("parentAntrian").equals("0")) {
+                arrayList.add(new LayananModel(jo.getString("nama"), R.drawable.service_health, Antrian.class, jo.getString("kodeJadwal"), jo.getString("parentAntrian"), jo.getString("idAntrian"), jo.getString("jamParent")));
+              }
             }
           } catch (JSONException e) {
             e.printStackTrace();
           }
-          ShowAdapter();
+          ShowAdapter(editor);
         }
 
         @Override
@@ -79,12 +81,11 @@ public class Layanan extends AppCompatActivity {
       });
   }
 
-  private void ShowAdapter() {
+  private void ShowAdapter(SharedPreferences.Editor editor) {
     LayananAdapter adapter = new LayananAdapter(this, arrayList);
     RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(this, 2);
     recyclerView.setLayoutManager(mLayoutManager);
     recyclerView.setAdapter(adapter);
-    SharedPreferences.Editor editor = sharedpreferences.edit();
 
     adapter.setOnItemClickListener(new LayananAdapter.OnItemClickListener() {
       @Override

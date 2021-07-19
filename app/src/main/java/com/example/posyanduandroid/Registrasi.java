@@ -68,6 +68,9 @@ public class Registrasi extends AppCompatActivity {
           @Override
           public void onResponse(JSONArray response) {
             pd.dismiss();
+            Intent in = new Intent(Registrasi.this, Login.class);
+            startActivity(in);
+            finish();
           }
 
           @Override

@@ -42,6 +42,15 @@ public class Login extends AppCompatActivity {
     loginButton = findViewById(R.id.btnLogin);
     sharedpreferences = getSharedPreferences(MY_PREFS_NAME, Context.MODE_PRIVATE);
 
+    String lastUsm = sharedpreferences.getString("usernameLogins", "");
+    String lastPswd = sharedpreferences.getString("passwordLogins", "");
+
+    if(lastUsm.length() > 0 && lastPswd.length() > 0) {
+      Intent i = new Intent(Login.this, Dashboard.class);
+      startActivity(i);
+      finish();
+    }
+
     loginButton.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {
@@ -70,6 +79,8 @@ public class Login extends AppCompatActivity {
                 try {
                   editor.putString("idAnggotaLogin", response.getString("idPengguna"));
                   editor.putString("jenisUserLogin", response.getString("jenis"));
+                  editor.putString("usernameLogins", response.getString("username"));
+                  editor.putString("passwordLogins", response.getString("password"));
                   editor.commit();
                 } catch (JSONException e) {
                   e.printStackTrace();
@@ -82,6 +93,7 @@ public class Login extends AppCompatActivity {
               @Override
               public void onError(ANError anError) {
                 Toast toast = Toast. makeText(getApplicationContext(), "Username / Password Salah!", Toast. LENGTH_SHORT); toast. show();
+                pd.dismiss();
               }
             });
         }

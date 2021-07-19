@@ -3,6 +3,7 @@ package com.example.posyanduandroid;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -19,19 +20,19 @@ public class Dashboard extends AppCompatActivity {
 
   @BindView(R.id.rv_dashboard)
   RecyclerView recyclerView;
+  SharedPreferences mPrefs;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.dashboard);
-
+    mPrefs = getSharedPreferences("MyPrefs",0);
     ButterKnife.bind(this);
 
     addData();
   }
 
   private void addData() {
-    SharedPreferences mPrefs = getSharedPreferences("MyPrefs",0);
     String jenis = mPrefs.getString("jenisUserLogin", "");
 
     arrayList = new ArrayList<>();
@@ -45,9 +46,11 @@ public class Dashboard extends AppCompatActivity {
         break;
 
       case "Bumil":
+        arrayList.add(new DashboardModel("Rekap Ibu Hamil", R.drawable.rekap_bayi, Rekap.class));
         break;
 
       case "Lansia":
+        arrayList.add(new DashboardModel("Rekap Lansia", R.drawable.rekap_bayi, Rekap.class));
         break;
     }
 
@@ -63,5 +66,16 @@ public class Dashboard extends AppCompatActivity {
         startActivity(intent);
       }
     });
+  }
+
+  public void Logout(View view) {
+    SharedPreferences.Editor editor = mPrefs.edit();
+    editor.putString("usernameLogins", "");
+    editor.putString("passwordLogins", "");
+    editor.commit();
+
+    Intent in = new Intent(Dashboard.this, Login.class);
+    startActivity(in);
+    finish();
   }
 }

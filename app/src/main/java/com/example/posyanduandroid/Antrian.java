@@ -28,6 +28,7 @@ public class Antrian extends AppCompatActivity {
 
   Integer antrianNomor;
   private String TAG = "Antrian";
+  private String jamChild;
   SharedPreferences mPrefs;
 
   @Override
@@ -41,11 +42,11 @@ public class Antrian extends AppCompatActivity {
     nmLayanID.setText(name);
 
     Button btn = findViewById(R.id.btnGetAntrian);
-    String prntAntrian = mPrefs.getString("ParentAntrian", "");
     String idAnggota = mPrefs.getString("idAnggotaLogin", "");
     String KodeJadwal = mPrefs.getString("KodeKey", "");
     String idAntrian = mPrefs.getString("idAntrian", "");
-    String jamParent = mPrefs.getString("jamParent", "");
+
+    CheckHaveAntrian(mPrefs, KodeJadwal, idAnggota);
 
     btn.setOnClickListener(new View.OnClickListener() {
       @Override
@@ -54,7 +55,7 @@ public class Antrian extends AppCompatActivity {
           .addBodyParameter("kdJadwal", KodeJadwal)
           .addBodyParameter("idAnggota", idAnggota)
           .addBodyParameter("parentAntrian", idAntrian)
-          .addBodyParameter("jam", jamParent)
+          .addBodyParameter("jam", jamChild)
           .addBodyParameter("status", String.valueOf(1))
           .addBodyParameter("noUrut", String.valueOf(antrianNomor))
           .setPriority(Priority.MEDIUM)
@@ -72,11 +73,9 @@ public class Antrian extends AppCompatActivity {
           });
       }
     });
-
-    CheckHaveAntrian(mPrefs, KodeJadwal, idAnggota);
   }
 
-  public void GetFirst(SharedPreferences some) {
+  public void GetFirst(SharedPreferences some, String kodeJadwals) {
     String str = some.getString("KodeKey", "");
 
     ProgressDialog pd = new ProgressDialog(Antrian.this);
@@ -92,6 +91,34 @@ public class Antrian extends AppCompatActivity {
         public void onResponse(JSONObject response) {
           pd.dismiss();
           try {
+            AndroidNetworking.post("https://posyandukudus.000webhostapp.com/API/api_checkHaveParentClock.php")
+              .addBodyParameter("kdJadwal", kodeJadwals)
+              .setPriority(Priority.LOW)
+              .build()
+              .getAsJSONObject(new JSONObjectRequestListener() {
+                @Override
+                public void onResponse(JSONObject response) {
+                  pd.dismiss();
+                  try {
+                    Log.d(TAG, "onResponse: " + response.getString("jams"));
+
+                    if(response.getString("jams").equals("null")) {
+                      jamChild = mPrefs.getString("jamParent", "");
+                      Log.d(TAG, "onResponse: Kosong, Ambil Parent" );
+                    } else {
+                      jamChild = response.getString("jams");
+                      Log.d(TAG, "onResponse: Ada Max Nya");
+                    }
+                  } catch (JSONException e) {
+                    e.printStackTrace();
+                  }
+                }
+
+                @Override
+                public void onError(ANError anError) {
+
+                }
+              });
             antrianNomor = response.getInt("maxUrut");
             TextView nomorUruts = findViewById(R.id.valueIncrement);
             nomorUruts.setText(String.valueOf(antrianNomor));
@@ -134,7 +161,7 @@ public class Antrian extends AppCompatActivity {
                 break;
 
               case "Kosong":
-                GetFirst(some);
+                GetFirst(some, kdJaduwal);
                 break;
             }
           } catch (JSONException e) {
