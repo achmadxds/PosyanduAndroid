@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 
@@ -24,12 +26,14 @@ import butterknife.ButterKnife;
 
 public class Rekap_Imunisasi_Balita extends AppCompatActivity {
 
+  private static final String MY_PREFS_NAME = "MyPrefs";
   private String TAG = "RekapFisikActivity";
   @BindView(R.id.rv_rekap_imunisasi_balita)
   RecyclerView recyclerView;
 
   private Rekap_Imunisasi_Balita_Adapter rekapImunAdapter;
   private ArrayList<Rekap_Imunisasi_Balita_Model> rekapImunArray;
+  private SharedPreferences sharedpreferences;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -43,8 +47,11 @@ public class Rekap_Imunisasi_Balita extends AppCompatActivity {
 
   private void addData() {
     rekapImunArray = new ArrayList<>();
+    sharedpreferences = getSharedPreferences(MY_PREFS_NAME, Context.MODE_PRIVATE);
+    String lastAidi = sharedpreferences.getString("idAnggotaLogin", "");
 
-    AndroidNetworking.get("https://posyandukudus.000webhostapp.com/API/api_balita_vaksin.php")
+    AndroidNetworking.post("https://posyandukudus.000webhostapp.com/API/api_balita_vaksin.php")
+      .addBodyParameter("aidiAnggota", lastAidi)
       .setPriority(Priority.LOW)
       .build()
       .getAsJSONArray(new JSONArrayRequestListener() {
@@ -54,7 +61,7 @@ public class Rekap_Imunisasi_Balita extends AppCompatActivity {
             for (int o = 0; o < response.length(); o++) {
               JSONObject jo = response.getJSONObject(o);
               Log.d(TAG, "onResponse: " + jo);
-              rekapImunArray.add(new Rekap_Imunisasi_Balita_Model(jo.getString("tanggal"), jo.getString("nmImunisasi")));
+              rekapImunArray.add(new Rekap_Imunisasi_Balita_Model(jo.getString("nmImunisasi"), jo.getString("tanggal")));
             }
 
             rekapImunAdapter = new Rekap_Imunisasi_Balita_Adapter(this, rekapImunArray);

@@ -19,38 +19,38 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.Date;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class RekapFisikActivity extends AppCompatActivity {
+public class Rekap_Imunisasi_Lansia extends AppCompatActivity {
 
   private static final String MY_PREFS_NAME = "MyPrefs";
   private String TAG = "RekapFisikActivity";
-  @BindView(R.id.rv_jadwal)
+
+  @BindView(R.id.rv_rekap_imunisasi_lansia)
   RecyclerView recyclerView;
 
-  private RekapFisikAdapter rekapFisikAdapter;
-  private ArrayList<RekapFisikModel> rekapFisikArray;
+  private Rekap_Imunisasi_Lansia_Adapter rekapImunAdapter;
+  private ArrayList<Rekap_Imunisasi_Lansia_Model> rekapImunArray;
   private SharedPreferences sharedpreferences;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    setContentView(R.layout.activity_rekapfisikbalita);
+    setContentView(R.layout.activity_rekap_imunisasi_lansia);
 
     ButterKnife.bind(this);
 
     addData();
   }
 
-  private void addData() {
-    rekapFisikArray = new ArrayList<>();
+  public void addData() {
+    rekapImunArray = new ArrayList<>();
     sharedpreferences = getSharedPreferences(MY_PREFS_NAME, Context.MODE_PRIVATE);
     String lastAidi = sharedpreferences.getString("idAnggotaLogin", "");
 
-    AndroidNetworking.post("https://posyandukudus.000webhostapp.com/API/api_balita_fisik.php")
+    AndroidNetworking.post("https://posyandukudus.000webhostapp.com/API/api_lansia_vaksin.php")
       .addBodyParameter("aidiAnggota", lastAidi)
       .setPriority(Priority.LOW)
       .build()
@@ -58,23 +58,24 @@ public class RekapFisikActivity extends AppCompatActivity {
         @Override
         public void onResponse(JSONArray response) {
           try {
-            for (int i = 0; i < response.length(); i++) {
-              JSONObject jo = response.getJSONObject(i);
+            for (int o = 0; o < response.length(); o++) {
+              JSONObject jo = response.getJSONObject(o);
               Log.d(TAG, "onResponse: " + jo);
-              rekapFisikArray.add(new RekapFisikModel(jo.getString("nm_balita"), jo.getString("berat") + " Kg", jo.getString("tanggal"), jo.getString("panjang") + " Kg"));
+              rekapImunArray.add(new Rekap_Imunisasi_Lansia_Model(jo.getString("nmImunisasi"), jo.getString("tanggal")));
             }
 
-            rekapFisikAdapter = new RekapFisikAdapter(this, rekapFisikArray);
+            rekapImunAdapter = new Rekap_Imunisasi_Lansia_Adapter(this, rekapImunArray);
             RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
             recyclerView.setLayoutManager(layoutManager);
-            recyclerView.setAdapter(rekapFisikAdapter);
+            recyclerView.setAdapter(rekapImunAdapter);
           } catch (JSONException e) {
             e.printStackTrace();
           }
         }
+
         @Override
-        public void onError(ANError error) {
-          Log.d(TAG, "onError: " + error);
+        public void onError(ANError anError) {
+          Log.d(TAG, "onError: " + anError);
         }
       });
   }

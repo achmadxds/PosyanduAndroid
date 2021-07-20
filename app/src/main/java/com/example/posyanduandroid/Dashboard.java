@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -34,6 +35,13 @@ public class Dashboard extends AppCompatActivity {
 
   private void addData() {
     String jenis = mPrefs.getString("jenisUserLogin", "");
+    String lastUsm = mPrefs.getString("usernameLogins", "");
+
+    TextView usr = findViewById(R.id.nameLastoLogin);
+    TextView jenise = findViewById(R.id.jenisLastoLogin);
+
+    usr.setText(lastUsm.toString());
+    jenise.setText(jenis.toString());
 
     arrayList = new ArrayList<>();
     arrayList.add(new DashboardModel("Beranda", R.drawable.beranda, Beranda.class));
@@ -46,11 +54,10 @@ public class Dashboard extends AppCompatActivity {
         break;
 
       case "Bumil":
-        arrayList.add(new DashboardModel("Rekap Ibu Hamil", R.drawable.rekap_bayi, Rekap.class));
         break;
 
       case "Lansia":
-        arrayList.add(new DashboardModel("Rekap Lansia", R.drawable.rekap_bayi, Rekap.class));
+        arrayList.add(new DashboardModel("Rekap Lansia", R.drawable.rekap_bayi, Rekap_Imunisasi_Lansia.class));
         break;
     }
 

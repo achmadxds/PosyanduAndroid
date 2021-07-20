@@ -1,10 +1,10 @@
 package com.example.posyanduandroid;
 
-public class Rekap_Imunisasi_Balita_Model {
+public class Rekap_Imunisasi_Lansia_Model {
 
   private String nmImunisasi, tglImunisasi;
 
-  public Rekap_Imunisasi_Balita_Model() {}
+  public Rekap_Imunisasi_Lansia_Model() {}
 
   public String getNmImunisasi() {
     return nmImunisasi;
@@ -22,7 +22,7 @@ public class Rekap_Imunisasi_Balita_Model {
     this.tglImunisasi = tglImunisasi;
   }
 
-  public Rekap_Imunisasi_Balita_Model(String nmImunisasi, String tglImunisasi) {
+  public Rekap_Imunisasi_Lansia_Model(String nmImunisasi, String tglImunisasi) {
     this.nmImunisasi = nmImunisasi;
     this.tglImunisasi = tglImunisasi;
   }

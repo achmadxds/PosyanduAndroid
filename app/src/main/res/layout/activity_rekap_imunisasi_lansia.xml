@@ -5,13 +5,13 @@
   android:layout_width="match_parent"
   android:layout_height="match_parent"
   android:orientation="vertical"
-  tools:context=".Rekap_Imunisasi_Balita"
+  tools:context=".Rekap_Imunisasi_Lansia"
   android:background="@drawable/bgg_rekap">
 
   <TextView
     android:layout_width="match_parent"
     android:layout_height="@dimen/_70sdp"
-    android:text="REKAP IMUNISASI BALITA"
+    android:text="REKAP IMUNISASI LANSIA"
     android:textStyle="bold"
     android:layout_marginTop="@dimen/_30sdp"
     android:layout_gravity="center"
@@ -23,9 +23,9 @@
     android:paddingLeft="@dimen/_6sdp"
     android:paddingRight="@dimen/_6sdp"
     android:layout_marginTop="@dimen/_20sdp"
-    android:id="@+id/rv_rekap_imunisasi_balita"
+    android:id="@+id/rv_rekap_imunisasi_lansia"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    tools:listitem="@layout/activity_rekap_imunisasi_balita_list" />
+    tools:listitem="@layout/activity_rekap_imunisasi_lansia_list" />
 
 </LinearLayout>

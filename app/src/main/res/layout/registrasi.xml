@@ -1,127 +1,289 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_height="match_parent"
-    android:layout_width="match_parent"
-    android:background="@color/primary"
-    android:paddingLeft="@dimen/_20sdp"
-    android:paddingRight="@dimen/_20sdp"
-    android:layout_gravity="center"
-    android:orientation="vertical"
-    tools:context=".Registrasi">
+  xmlns:tools="http://schemas.android.com/tools"
+  android:layout_height="match_parent"
+  android:layout_width="match_parent"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  android:background="@drawable/bgg_reg_antrian"
+  android:paddingLeft="@dimen/_10sdp"
+  android:paddingRight="@dimen/_10sdp"
+  android:paddingTop="@dimen/_17sdp"
+  android:paddingBottom="@dimen/_17sdp"
+  android:layout_gravity="center"
+  android:orientation="vertical"
+  tools:context=".Registrasi">
 
+    <ImageView
+      android:layout_width="@dimen/_270sdp"
+      android:layout_height="@dimen/_115sdp"
+      android:layout_marginTop="@dimen/_30sdp"
+      android:layout_centerHorizontal="true"
+      android:foregroundGravity="center"
+      android:background="@drawable/heading"
+    />
 
-      <LinearLayout
+    <GridLayout
+      android:id="@+id/mainGrids"
+      android:layout_centerHorizontal="true"
+      android:layout_centerVertical="true"
+      android:layout_width="match_parent"
+      android:layout_height="@dimen/_600sdp"
+      android:paddingTop="@dimen/_60sdp"
+      android:paddingBottom="@dimen/_10sdp"
+      android:columnCount="1"
+      android:rowCount="2"
+      tools:ignore="MissingConstraints">
+
+      <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_height="@dimen/_30sdp"
+        android:layout_row="0"
+        android:layout_rowWeight="1"
+        android:layout_column="0"
+        android:layout_columnWeight="1"
+        android:layout_gravity="fill"
+        android:layout_marginTop="@dimen/_120sdp"
+        app:cardCornerRadius="@dimen/_10sdp"
+        app:cardElevation="@dimen/_5sdp"
+        app:cardUseCompatPadding="true"
+        tools:ignore="OnClick">
 
-        <TextView
+        <LinearLayout
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
-          android:layout_gravity="center"
-          android:layout_marginTop="@dimen/_85sdp"
-          android:textStyle="bold"
-          android:textSize="@dimen/_45ssp"
-          android:text="Daftar User"
-          android:textColor="@color/white" >
+          android:layout_gravity="center_horizontal"
+          android:gravity="center"
+          android:orientation="vertical">
 
-        </TextView>
+          <TextView
+            android:text="Kode Unik"
+            android:layout_gravity="left"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_18ssp"
+            android:textStyle="bold"
+            android:layout_marginTop="@dimen/_22sdp"
+            android:layout_width="@dimen/_100sdp"
+            android:layout_height="@dimen/_22sdp" />
 
-        <EditText
-          android:id="@+id/uniquecode"
-          android:layout_width="@dimen/_240sdp"
-          android:layout_height="@dimen/_33sdp"
-          android:paddingStart="@dimen/_12sdp"
-          android:layout_marginStart="@dimen/_15sdp"
-          android:layout_marginTop="@dimen/_20sdp"
-          android:layout_marginEnd="20dp"
-          android:paddingLeft="10dp"
-          android:hint="Kode Unik Kamu..."
-          android:background="@drawable/rounded_bg"
-          android:layout_centerHorizontal="true"
-          android:singleLine="true"
-          android:textColorHint="@color/black" />
+          <EditText
+            android:id="@+id/uniquecode"
+            android:layout_width="@dimen/_246sdp"
+            android:layout_height="@dimen/_29sdp"
+            android:layout_marginTop="@dimen/_4sdp"
+            android:paddingStart="@dimen/_10sdp"
+            android:hint="Masukan Kode Unik..."
+            android:background="@drawable/rounded_bg"
+            android:layout_centerHorizontal="true"
+            android:singleLine="true"
+            android:textColorHint="@color/black" />
 
-        <EditText
-          android:visibility="gone"
-          android:id="@+id/daftarUsername"
-          android:layout_width="@dimen/_240sdp"
-          android:layout_height="@dimen/_33sdp"
-          android:paddingLeft="10dp"
-          android:layout_marginStart="20dp"
-          android:layout_marginTop="@dimen/_20sdp"
-          android:layout_centerHorizontal="true"
-          android:background="@drawable/rounded_bg"
-          android:layout_marginEnd="20dp"
-          android:hint="Username"
-          android:singleLine="true"
-          android:textColorHint="@color/black" />
+          <TextView
+            android:visibility="gone"
+            android:id="@+id/daftarUsernameLabel"
+            android:text="Username"
+            android:layout_gravity="left"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_18ssp"
+            android:textStyle="bold"
+            android:layout_marginTop="@dimen/_12sdp"
+            android:layout_width="@dimen/_100sdp"
+            android:layout_height="@dimen/_22sdp" />
 
-        <EditText
-          android:visibility="gone"
-          android:id="@+id/daftarPassword"
-          android:layout_width="@dimen/_240sdp"
-          android:layout_height="@dimen/_33sdp"
-          android:inputType="textPassword"
-          android:layout_marginStart="@dimen/_15sdp"
-          android:layout_marginTop="@dimen/_10sdp"
-          android:layout_marginEnd="20dp"
-          android:paddingLeft="10dp"
-          android:hint="Password"
-          android:background="@drawable/rounded_bg"
-          android:layout_centerHorizontal="true"
-          android:singleLine="true"
-          android:textColorHint="@color/black" />
+          <EditText
+            android:visibility="gone"
+            android:id="@+id/daftarUsername"
+            android:layout_width="@dimen/_246sdp"
+            android:layout_height="@dimen/_29sdp"
+            android:layout_marginTop="@dimen/_4sdp"
+            android:paddingLeft="@dimen/_10sdp"
+            android:hint="Telepon atau Email"
+            android:background="@drawable/rounded_bg"
+            android:layout_centerHorizontal="true"
+            android:singleLine="true"
+            android:textColorHint="@color/black" />
 
-        <EditText
-          android:visibility="gone"
-          android:id="@+id/daftarRePassword"
-          android:inputType="textPassword"
-          android:layout_width="@dimen/_240sdp"
-          android:layout_height="@dimen/_33sdp"
-          android:layout_marginStart="@dimen/_15sdp"
-          android:layout_marginTop="@dimen/_10sdp"
-          android:layout_marginEnd="20dp"
-          android:paddingLeft="10dp"
-          android:hint="Re-Password"
-          android:background="@drawable/rounded_bg"
-          android:layout_centerHorizontal="true"
-          android:singleLine="true"
-          android:textColorHint="@color/black" />
+          <TextView
+            android:paddingLeft="@dimen/_10sdp"
+            android:visibility="gone"
+            android:id="@+id/daftarPasswordLabel"
+            android:text="Password"
+            android:layout_gravity="left"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_18ssp"
+            android:textStyle="bold"
+            android:layout_marginTop="@dimen/_12sdp"
+            android:layout_width="@dimen/_100sdp"
+            android:layout_height="@dimen/_22sdp" />
 
-        <Button
-          android:visibility="gone"
-          android:id="@+id/btnMakeAccount"
-          android:layout_width="@dimen/_240sdp"
-          android:layout_height="wrap_content"
-          android:layout_marginStart="20dp"
-          android:layout_marginTop="@dimen/_20sdp"
-          android:backgroundTint="#32a852"
-          android:textSize="15dp"
-          android:textStyle="bold"
-          android:text="Buat Akun"
-          android:layout_centerHorizontal="true"
-          android:textColor="@color/white"
-          android:textAllCaps="true"
-          />
+          <EditText
+            android:visibility="gone"
+            android:id="@+id/daftarPassword"
+            android:layout_width="@dimen/_246sdp"
+            android:layout_height="@dimen/_29sdp"
+            android:layout_marginTop="@dimen/_4sdp"
+            android:paddingLeft="@dimen/_10sdp"
+            android:hint="Telepon atau Email"
+            android:background="@drawable/rounded_bg"
+            android:layout_centerHorizontal="true"
+            android:singleLine="true"
+            android:textColorHint="@color/black" />
 
-        <Button
-          android:id="@+id/btnBackToLogin"
-          android:layout_width="@dimen/_240sdp"
-          android:layout_height="wrap_content"
-          android:layout_marginStart="20dp"
-          android:layout_marginTop="@dimen/_5sdp"
-          android:layout_marginBottom="@dimen/_20sdp"
-          android:backgroundTint="#2448bd"
-          android:text="Kembali"
-          android:onClick="Kembali"
-          android:textStyle="bold"
-          android:textSize="15dp"
-          android:layout_centerHorizontal="true"
-          android:textColor="@color/white"
-          android:textAllCaps="true" />
+          <TextView
+            android:paddingLeft="@dimen/_10sdp"
+            android:visibility="gone"
+            android:id="@+id/daftarRePasswordLabel"
+            android:text="Re-Password"
+            android:layout_gravity="left"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_18ssp"
+            android:textStyle="bold"
+            android:layout_marginTop="@dimen/_12sdp"
+            android:layout_width="@dimen/_120sdp"
+            android:layout_height="@dimen/_22sdp" />
 
-      </LinearLayout>
+          <EditText
+            android:visibility="gone"
+            android:id="@+id/daftarRePassword"
+            android:layout_width="@dimen/_246sdp"
+            android:layout_height="@dimen/_29sdp"
+            android:layout_marginTop="@dimen/_4sdp"
+            android:paddingLeft="@dimen/_10sdp"
+            android:hint="Telepon atau Email"
+            android:background="@drawable/rounded_bg"
+            android:layout_centerHorizontal="true"
+            android:singleLine="true"
+            android:textColorHint="@color/black" />
+
+          <Button
+            android:visibility="gone"
+            android:id="@+id/btnMakeAccount"
+            android:layout_width="@dimen/_146sdp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_12sdp"
+            android:backgroundTint="#188fcc"
+            android:textSize="@dimen/_13ssp"
+            android:text="Sign In"
+            android:layout_centerHorizontal="true"
+            android:textColor="@color/white"
+            android:textAllCaps="true"
+            />
+
+          <Button
+            android:id="@+id/btnBackToLogin"
+            android:layout_width="@dimen/_146sdp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_3sdp"
+            android:layout_marginBottom="@dimen/_20sdp"
+            android:backgroundTint="#2448bd"
+            android:text="Kembali"
+            android:onClick="Kembali"
+            android:textStyle="bold"
+            android:textSize="15dp"
+            android:layout_centerHorizontal="true"
+            android:textColor="@color/white"
+            android:textAllCaps="true" />
+
+        </LinearLayout>
+      </androidx.cardview.widget.CardView>
+
+    </GridLayout>
+
+<!--      <LinearLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:orientation="vertical">-->
+
+<!--        <TextView-->
+<!--          android:layout_width="wrap_content"-->
+<!--          android:layout_height="wrap_content"-->
+<!--          android:layout_gravity="center"-->
+<!--          android:layout_marginTop="@dimen/_85sdp"-->
+<!--          android:textStyle="bold"-->
+<!--          android:textSize="@dimen/_45ssp"-->
+<!--          android:text="Daftar User"-->
+<!--          android:textColor="@color/white" >-->
+
+<!--        </TextView>-->
+
+<!--        <EditText-->
+<!--          android:id="@+id/uniquecode"-->
+<!--          android:layout_width="@dimen/_240sdp"-->
+<!--          android:layout_height="@dimen/_33sdp"-->
+<!--          android:paddingStart="@dimen/_12sdp"-->
+<!--          android:layout_marginStart="@dimen/_15sdp"-->
+<!--          android:layout_marginTop="@dimen/_20sdp"-->
+<!--          android:layout_marginEnd="20dp"-->
+<!--          android:paddingLeft="10dp"-->
+<!--          android:hint="Kode Unik Kamu..."-->
+<!--          android:background="@drawable/rounded_bg"-->
+<!--          android:layout_centerHorizontal="true"-->
+<!--          android:singleLine="true"-->
+<!--          android:textColorHint="@color/black" />-->
+
+<!--        <EditText-->
+<!--          android:visibility="gone"-->
+<!--          android:id="@+id/daftarPassword"-->
+<!--          android:layout_width="@dimen/_240sdp"-->
+<!--          android:layout_height="@dimen/_33sdp"-->
+<!--          android:inputType="textPassword"-->
+<!--          android:layout_marginStart="@dimen/_15sdp"-->
+<!--          android:layout_marginTop="@dimen/_10sdp"-->
+<!--          android:layout_marginEnd="20dp"-->
+<!--          android:paddingLeft="10dp"-->
+<!--          android:hint="Password"-->
+<!--          android:background="@drawable/rounded_bg"-->
+<!--          android:layout_centerHorizontal="true"-->
+<!--          android:singleLine="true"-->
+<!--          android:textColorHint="@color/black" />-->
+
+<!--        <EditText-->
+<!--          android:visibility="gone"-->
+<!--          android:id="@+id/daftarRePassword"-->
+<!--          android:inputType="textPassword"-->
+<!--          android:layout_width="@dimen/_240sdp"-->
+<!--          android:layout_height="@dimen/_33sdp"-->
+<!--          android:layout_marginStart="@dimen/_15sdp"-->
+<!--          android:layout_marginTop="@dimen/_10sdp"-->
+<!--          android:layout_marginEnd="20dp"-->
+<!--          android:paddingLeft="10dp"-->
+<!--          android:hint="Re-Password"-->
+<!--          android:background="@drawable/rounded_bg"-->
+<!--          android:layout_centerHorizontal="true"-->
+<!--          android:singleLine="true"-->
+<!--          android:textColorHint="@color/black" />-->
+
+<!--        <Button-->
+<!--          android:visibility="gone"-->
+<!--          android:id="@+id/btnMakeAccount"-->
+<!--          android:layout_width="@dimen/_240sdp"-->
+<!--          android:layout_height="wrap_content"-->
+<!--          android:layout_marginStart="20dp"-->
+<!--          android:layout_marginTop="@dimen/_20sdp"-->
+<!--          android:backgroundTint="#32a852"-->
+<!--          android:textSize="15dp"-->
+<!--          android:textStyle="bold"-->
+<!--          android:text="Buat Akun"-->
+<!--          android:layout_centerHorizontal="true"-->
+<!--          android:textColor="@color/white"-->
+<!--          android:textAllCaps="true"-->
+<!--          />-->
+
+<!--        <Button-->
+<!--          android:id="@+id/btnBackToLogin"-->
+<!--          android:layout_width="@dimen/_240sdp"-->
+<!--          android:layout_height="wrap_content"-->
+<!--          android:layout_marginStart="20dp"-->
+<!--          android:layout_marginTop="@dimen/_5sdp"-->
+<!--          android:layout_marginBottom="@dimen/_20sdp"-->
+<!--          android:backgroundTint="#2448bd"-->
+<!--          android:text="Kembali"-->
+<!--          android:onClick="Kembali"-->
+<!--          android:textStyle="bold"-->
+<!--          android:textSize="15dp"-->
+<!--          android:layout_centerHorizontal="true"-->
+<!--          android:textColor="@color/white"-->
+<!--          android:textAllCaps="true" />-->
+
+<!--      </LinearLayout>-->
 
   </RelativeLayout>

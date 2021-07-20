@@ -61,7 +61,7 @@ public class Registrasi extends AppCompatActivity {
         .addBodyParameter("password", pswds.getText().toString().trim())
         .addBodyParameter("kdUnik", kdUnik)
         .addBodyParameter("level", "Anggota")
-        .addBodyParameter("status", "0")
+        .addBodyParameter("status", "1")
         .setPriority(Priority.LOW)
         .build()
         .getAsJSONArray(new JSONArrayRequestListener() {
@@ -99,11 +99,18 @@ public class Registrasi extends AppCompatActivity {
                 EditText usm = findViewById(R.id.daftarUsername);
                 EditText pswd = findViewById(R.id.daftarPassword);
                 EditText repswd = findViewById(R.id.daftarRePassword);
+                TextView lblUsm = findViewById(R.id.daftarUsernameLabel);
+                TextView lblpswd = findViewById(R.id.daftarPasswordLabel);
+                TextView lblrepswd = findViewById(R.id.daftarRePasswordLabel);
+
                 Button btnMakeAccount = findViewById(R.id.btnMakeAccount);
 
                 switch (response.getString("data")) {
                   case "-":
                     kodeUnixs.setBackgroundResource(R.drawable.rounded_bg);
+                    lblpswd.setVisibility(View.GONE);
+                    lblrepswd.setVisibility(View.GONE);
+                    lblUsm.setVisibility(View.GONE);
                     usm.setVisibility(View.GONE);
                     pswd.setVisibility(View.GONE);
                     repswd.setVisibility(View.GONE);
@@ -117,6 +124,9 @@ public class Registrasi extends AppCompatActivity {
                     kdUnik = jos.getString("kdAnggota");
                     nmUser = jos.getString("nmAnggota");
                     kodeUnixs.setBackgroundResource(R.drawable.uniquecode_right);
+                    lblpswd.setVisibility(View.VISIBLE);
+                    lblrepswd.setVisibility(View.VISIBLE);
+                    lblUsm.setVisibility(View.VISIBLE);
                     usm.setVisibility(View.VISIBLE);
                     pswd.setVisibility(View.VISIBLE);
                     repswd.setVisibility(View.VISIBLE);
@@ -152,5 +162,6 @@ public class Registrasi extends AppCompatActivity {
   public void Kembali(View view) {
     Intent intent= new Intent(Registrasi.this, Login.class);
     startActivity(intent);
+    finish();
   }
 }

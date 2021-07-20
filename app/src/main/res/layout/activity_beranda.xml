@@ -1,69 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/primary"
-    tools:context=".Beranda">
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  android:background="@drawable/bgg_reg_antrian"
+  tools:context=".Beranda">
 
-    <ImageView
-        android:id="@+id/image1"
-        android:layout_width="@dimen/_120sdp"
-        android:layout_height="@dimen/_110sdp"
-        android:layout_centerHorizontal="true"
-        android:layout_marginVertical="70dp"
-        android:src="@drawable/posyandu" />
+  <ImageView
+    android:id="@+id/image1"
+    android:layout_width="@dimen/_150sdp"
+    android:layout_height="@dimen/_130sdp"
+    android:layout_centerHorizontal="true"
+    android:layout_marginVertical="@dimen/_100sdp"
+    android:src="@drawable/posyandu" />
 
-    <TextView
-        android:id="@+id/textView7"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-      android:layout_marginTop="@dimen/_170sdp"
-        android:layout_marginLeft="20dp"
-        android:shadowColor="#EB38CF1E"
-        android:shadowDx="1"
-        android:shadowDy="1"
-        android:shadowRadius="2"
-        android:text="POSYANDU BACIN :"
-        android:textSize="@dimen/_13ssp"
-        android:textStyle="bold"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
+  <TextView
+    android:textColor="@color/white"
+    android:id="@+id/textView7"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/_240sdp"
+    android:layout_marginLeft="@dimen/_15sdp"
+    android:shadowColor="#EB38CF1E"
+    android:shadowDx="1"
+    android:shadowDy="1"
+    android:shadowRadius="2"
+    android:text="POSYANDU BACIN :"
+    android:textSize="@dimen/_13ssp"
+    android:textStyle="bold"
+    android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
 
-    <TextView
-        android:id="@+id/textViewVisi"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/_189sdp"
-        android:layout_marginLeft="20dp"
-        android:text="Pogram Layanan : \n
+  <TextView
+    android:id="@+id/textViewVisi"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/_260sdp"
+    android:layout_marginLeft="@dimen/_15sdp"
+    android:text="Pogram Layanan : \n
         1. Check Kesehatan Rutin dibeberapa posyandu \n
         2. Pembagian Vitamin kepada anggota posyandu \n
         3. Suntik Imunisasi / Vaksin \n
         4. Cek Kehamilan &amp; Cek Masa Subur"
-        android:textSize="@dimen/_13ssp"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
+    android:textSize="@dimen/_14ssp"
+    android:textColor="@color/white"
+    android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
 
-    <Button
-        android:id="@+id/btnBack"
-        android:layout_width="@dimen/_140sdp"
-        android:layout_height="wrap_content"
-        android:onClick="backtoMenu"
-      android:layout_marginTop="@dimen/_470sdp"
-        android:layout_centerHorizontal="true"
-        android:backgroundTint="#2196F3"
-        android:text="Kembali Ke Menu"
-        android:layout_gravity="center"
-        android:textSize="10sp"
-        tools:ignore="OnClick" />
+  <Button
+    android:id="@+id/btnBack"
+    android:layout_width="@dimen/_140sdp"
+    android:layout_height="wrap_content"
+    android:onClick="backtoMenu"
+    android:layout_marginTop="@dimen/_470sdp"
+    android:layout_centerHorizontal="true"
+    android:backgroundTint="#2196F3"
+    android:text="Kembali Ke Menu"
+    android:layout_gravity="center"
+    android:textColor="@color/white"
+    android:textSize="10sp"
+    tools:ignore="OnClick" />
 
-    <TextView
-        android:layout_width="@dimen/_120sdp"
-        android:layout_height="@dimen/_35sdp"
-        android:layout_centerHorizontal="true"
-        android:layout_marginVertical="680dp"
-        android:text=" TIM PKM-PM \n UNIVERSITAS MURIA KUDUS"
-        android:textAlignment="center"
-        android:textColor="@color/black"
-        android:textSize="@dimen/_10ssp" />
+  <TextView
+    android:layout_width="@dimen/_120sdp"
+    android:layout_height="@dimen/_35sdp"
+    android:layout_centerHorizontal="true"
+    android:layout_marginVertical="680dp"
+    android:text=" TIM PKM-PM \n UNIVERSITAS MURIA KUDUS"
+    android:textAlignment="center"
+    android:textColor="@color/white"
+    android:textSize="@dimen/_10ssp" />
 </RelativeLayout>

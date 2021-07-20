@@ -14,7 +14,8 @@
     android:roundIcon="@mipmap/ic_launcher_round"
     android:supportsRtl="true"
     android:theme="@style/Theme.PosyanduAndroid">
-    <activity android:name=".Rekap_Imunisasi_Balita"></activity>
+    <activity android:name=".Rekap_Imunisasi_Lansia"></activity>
+    <activity android:name=".Rekap_Imunisasi_Balita" />
     <activity android:name=".After_Antrian" />
     <activity android:name=".Layanan" />
     <activity android:name=".listLayanan" />

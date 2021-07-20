@@ -7,6 +7,6 @@
     android:right="8dp"
     android:bottom="8dp" />
   <corners android:radius="2dp" />
-  <solid android:color="@color/secondary"/>
-  <stroke android:width="1dp" android:color="#AFAFAF"/>
+  <solid android:color="#f7e852"/>
+  <stroke android:width="1dp" android:color="@color/black"/>
 </shape>

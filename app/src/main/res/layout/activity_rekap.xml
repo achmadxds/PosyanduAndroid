@@ -5,24 +5,22 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Rekap"
-    android:background="@color/primary">
+    android:background="@drawable/bgg_reg_antrian">
 
     <TextView
         android:id="@+id/textView"
         style="@style/TextAppearance.AppCompat.Small"
         android:layout_width="@dimen/_200sdp"
-        android:layout_height="@dimen/_30ssp"
+        android:layout_height="@dimen/_40ssp"
         android:layout_centerHorizontal="true"
+      android:gravity="center"
         android:layout_gravity="center"
-        android:layout_marginTop="30dp"
-        android:textColor="@color/black"
+        android:layout_marginTop="@dimen/_42sdp"
+        android:textColor="@color/white"
         android:text="REKAP DATA BALITA"
         android:textAllCaps="true"
-        android:textSize="70px"
-        android:textStyle="bold"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="16dp" />
+        android:textSize="@dimen/_30ssp"
+        android:textStyle="bold"/>
 
     <GridLayout
         android:id="@+id/mainGrid"
