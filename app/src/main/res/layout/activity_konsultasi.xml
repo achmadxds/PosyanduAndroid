@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.swiperefreshlayout.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/swipe_konsultasi"
+    tools:context=".KonsultasiActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_alignParentTop="true"
+            android:id="@+id/recycler_konsultasi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/chat_layout"/>
+
+        <LinearLayout
+            android:id="@+id/chat_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginHorizontal="@dimen/_10sdp"
+            android:weightSum="1"
+            android:layout_alignParentBottom="true">
+
+            <EditText
+                android:background="@color/white"
+                android:textColor="@color/black"
+                android:id="@+id/txt_chat_konsultasi"
+                android:layout_width="0dp"
+                android:padding="@dimen/_2sdp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.8"
+                android:hint="Type here..."
+                android:inputType="textMultiLine"/>
+
+            <Button
+                android:id="@+id/btn_send_konsultasi"
+                android:layout_width="0dp"
+                android:backgroundTint="@color/teal_200"
+                android:text="Kirim"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.2"/>
+        </LinearLayout>
+
+        <ProgressBar
+            android:id="@+id/progress_bar_konsultasi"
+            android:backgroundTint="@color/purple_500"
+            android:indeterminateTint="@color/purple_500"
+            android:progressTint="@color/purple_500"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"/>
+
+    </RelativeLayout>
+
+
+</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
