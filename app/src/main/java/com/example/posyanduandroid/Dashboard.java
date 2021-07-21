@@ -45,7 +45,7 @@ public class Dashboard extends AppCompatActivity {
 
     arrayList = new ArrayList<>();
     arrayList.add(new DashboardModel("Beranda", R.drawable.beranda, Beranda.class));
-    arrayList.add(new DashboardModel("Layanan", R.drawable.beranda, Layanan.class));
+    arrayList.add(new DashboardModel("Layanan", R.drawable.services, Layanan.class));
     arrayList.add(new DashboardModel("Konsultasi", R.drawable.konsultasi, KonsultasiActivity.class));
 
     switch (jenis) {

@@ -95,7 +95,8 @@ public class Login extends AppCompatActivity {
 
               @Override
               public void onError(ANError anError) {
-                Toast toast = Toast. makeText(getApplicationContext(), "Username / Password Salah!", Toast. LENGTH_SHORT); toast. show();
+                Toast toast = Toast. makeText(getApplicationContext(), "Username / Password Salah!", Toast. LENGTH_SHORT);
+                toast. show();
                 pd.dismiss();
               }
             });

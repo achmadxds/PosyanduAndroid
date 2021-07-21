@@ -96,7 +96,7 @@
             android:layout_height="@dimen/_29sdp"
             android:layout_marginTop="@dimen/_4sdp"
             android:paddingLeft="@dimen/_10sdp"
-            android:hint="Telepon atau Email"
+            android:hint="Ketik Username"
             android:background="@drawable/rounded_bg"
             android:layout_centerHorizontal="true"
             android:singleLine="true"
@@ -122,7 +122,8 @@
             android:layout_height="@dimen/_29sdp"
             android:layout_marginTop="@dimen/_4sdp"
             android:paddingLeft="@dimen/_10sdp"
-            android:hint="Telepon atau Email"
+            android:hint="Ketik Password"
+            android:inputType="textPassword"
             android:background="@drawable/rounded_bg"
             android:layout_centerHorizontal="true"
             android:singleLine="true"
@@ -148,7 +149,8 @@
             android:layout_height="@dimen/_29sdp"
             android:layout_marginTop="@dimen/_4sdp"
             android:paddingLeft="@dimen/_10sdp"
-            android:hint="Telepon atau Email"
+            android:inputType="textPassword"
+            android:hint="Tulis Ulang Password"
             android:background="@drawable/rounded_bg"
             android:layout_centerHorizontal="true"
             android:singleLine="true"
@@ -162,7 +164,7 @@
             android:layout_marginTop="@dimen/_12sdp"
             android:backgroundTint="#188fcc"
             android:textSize="@dimen/_13ssp"
-            android:text="Sign In"
+            android:text="Daftar"
             android:layout_centerHorizontal="true"
             android:textColor="@color/white"
             android:textAllCaps="true"
@@ -177,7 +179,6 @@
             android:backgroundTint="#2448bd"
             android:text="Kembali"
             android:onClick="Kembali"
-            android:textStyle="bold"
             android:textSize="15dp"
             android:layout_centerHorizontal="true"
             android:textColor="@color/white"
@@ -187,103 +188,5 @@
       </androidx.cardview.widget.CardView>
 
     </GridLayout>
-
-<!--      <LinearLayout-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:orientation="vertical">-->
-
-<!--        <TextView-->
-<!--          android:layout_width="wrap_content"-->
-<!--          android:layout_height="wrap_content"-->
-<!--          android:layout_gravity="center"-->
-<!--          android:layout_marginTop="@dimen/_85sdp"-->
-<!--          android:textStyle="bold"-->
-<!--          android:textSize="@dimen/_45ssp"-->
-<!--          android:text="Daftar User"-->
-<!--          android:textColor="@color/white" >-->
-
-<!--        </TextView>-->
-
-<!--        <EditText-->
-<!--          android:id="@+id/uniquecode"-->
-<!--          android:layout_width="@dimen/_240sdp"-->
-<!--          android:layout_height="@dimen/_33sdp"-->
-<!--          android:paddingStart="@dimen/_12sdp"-->
-<!--          android:layout_marginStart="@dimen/_15sdp"-->
-<!--          android:layout_marginTop="@dimen/_20sdp"-->
-<!--          android:layout_marginEnd="20dp"-->
-<!--          android:paddingLeft="10dp"-->
-<!--          android:hint="Kode Unik Kamu..."-->
-<!--          android:background="@drawable/rounded_bg"-->
-<!--          android:layout_centerHorizontal="true"-->
-<!--          android:singleLine="true"-->
-<!--          android:textColorHint="@color/black" />-->
-
-<!--        <EditText-->
-<!--          android:visibility="gone"-->
-<!--          android:id="@+id/daftarPassword"-->
-<!--          android:layout_width="@dimen/_240sdp"-->
-<!--          android:layout_height="@dimen/_33sdp"-->
-<!--          android:inputType="textPassword"-->
-<!--          android:layout_marginStart="@dimen/_15sdp"-->
-<!--          android:layout_marginTop="@dimen/_10sdp"-->
-<!--          android:layout_marginEnd="20dp"-->
-<!--          android:paddingLeft="10dp"-->
-<!--          android:hint="Password"-->
-<!--          android:background="@drawable/rounded_bg"-->
-<!--          android:layout_centerHorizontal="true"-->
-<!--          android:singleLine="true"-->
-<!--          android:textColorHint="@color/black" />-->
-
-<!--        <EditText-->
-<!--          android:visibility="gone"-->
-<!--          android:id="@+id/daftarRePassword"-->
-<!--          android:inputType="textPassword"-->
-<!--          android:layout_width="@dimen/_240sdp"-->
-<!--          android:layout_height="@dimen/_33sdp"-->
-<!--          android:layout_marginStart="@dimen/_15sdp"-->
-<!--          android:layout_marginTop="@dimen/_10sdp"-->
-<!--          android:layout_marginEnd="20dp"-->
-<!--          android:paddingLeft="10dp"-->
-<!--          android:hint="Re-Password"-->
-<!--          android:background="@drawable/rounded_bg"-->
-<!--          android:layout_centerHorizontal="true"-->
-<!--          android:singleLine="true"-->
-<!--          android:textColorHint="@color/black" />-->
-
-<!--        <Button-->
-<!--          android:visibility="gone"-->
-<!--          android:id="@+id/btnMakeAccount"-->
-<!--          android:layout_width="@dimen/_240sdp"-->
-<!--          android:layout_height="wrap_content"-->
-<!--          android:layout_marginStart="20dp"-->
-<!--          android:layout_marginTop="@dimen/_20sdp"-->
-<!--          android:backgroundTint="#32a852"-->
-<!--          android:textSize="15dp"-->
-<!--          android:textStyle="bold"-->
-<!--          android:text="Buat Akun"-->
-<!--          android:layout_centerHorizontal="true"-->
-<!--          android:textColor="@color/white"-->
-<!--          android:textAllCaps="true"-->
-<!--          />-->
-
-<!--        <Button-->
-<!--          android:id="@+id/btnBackToLogin"-->
-<!--          android:layout_width="@dimen/_240sdp"-->
-<!--          android:layout_height="wrap_content"-->
-<!--          android:layout_marginStart="20dp"-->
-<!--          android:layout_marginTop="@dimen/_5sdp"-->
-<!--          android:layout_marginBottom="@dimen/_20sdp"-->
-<!--          android:backgroundTint="#2448bd"-->
-<!--          android:text="Kembali"-->
-<!--          android:onClick="Kembali"-->
-<!--          android:textStyle="bold"-->
-<!--          android:textSize="15dp"-->
-<!--          android:layout_centerHorizontal="true"-->
-<!--          android:textColor="@color/white"-->
-<!--          android:textAllCaps="true" />-->
-
-<!--      </LinearLayout>-->
 
   </RelativeLayout>

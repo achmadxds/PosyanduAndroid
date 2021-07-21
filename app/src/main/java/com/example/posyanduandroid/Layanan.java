@@ -98,6 +98,7 @@ public class Layanan extends AppCompatActivity {
         editor.commit();
         Intent intent = new Intent(getApplicationContext(), arrayList.get(position).getActivity());
         startActivity(intent);
+        finish();
       }
     });
   }

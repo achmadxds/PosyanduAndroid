@@ -85,8 +85,12 @@ public class KonsultasiActivity extends AppCompatActivity {
         progressDialog.setMessage("Sending messages...");
         progressDialog.setCancelable(false);
         progressDialog.show();
+
         String idAnggota = mPrefs.getString("idAnggotaLogin", "");
         String messages = txt_chat.getText().toString();
+      Log.d(TAG, "sendChat: " + idAnggota);
+      Log.d(TAG, "sendChat: " + messages);
+
         Date nowDate = new Date();
         DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String date = formatter.format(nowDate);

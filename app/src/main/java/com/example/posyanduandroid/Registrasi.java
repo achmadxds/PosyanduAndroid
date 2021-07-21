@@ -49,6 +49,8 @@ public class Registrasi extends AppCompatActivity {
   public void RegistrasiAkun(EditText usms, EditText pswds, EditText repswds) {
     String pswd = pswds.getText().toString().trim();
     String repswd = repswds.getText().toString().trim();
+    Log.d(TAG, "RegistrasiAkun: " + kdUnik);
+
     if(pswd.equals(repswd)) {
       ProgressDialog pd = new ProgressDialog(Registrasi.this);
       pd.setMessage("loading...");
@@ -64,9 +66,10 @@ public class Registrasi extends AppCompatActivity {
         .addBodyParameter("status", "1")
         .setPriority(Priority.LOW)
         .build()
-        .getAsJSONArray(new JSONArrayRequestListener() {
+        .getAsJSONObject(new JSONObjectRequestListener() {
           @Override
-          public void onResponse(JSONArray response) {
+          public void onResponse(JSONObject response) {
+            Toast.makeText(getApplicationContext(), "Berhasil Membuat Akun", Toast.LENGTH_SHORT).show();
             pd.dismiss();
             Intent in = new Intent(Registrasi.this, Login.class);
             startActivity(in);
@@ -75,7 +78,8 @@ public class Registrasi extends AppCompatActivity {
 
           @Override
           public void onError(ANError anError) {
-
+            Toast.makeText(getApplicationContext(), "Gagal Membuat Akun", Toast.LENGTH_SHORT).show();
+            pd.dismiss();
           }
         });
     } else {
@@ -121,6 +125,7 @@ public class Registrasi extends AppCompatActivity {
                     JSONObject jos = new JSONObject(response.getString("data"));
                     idPengguna = jos.getString("idAnggota");
                     kdUnik = jos.getString("kdAnggota");
+                    Log.d(TAG, "onResponse: " + jos.getString("kdAnggota"));
                     nmUser = jos.getString("nmAnggota");
                     kodeUnixs.setBackgroundResource(R.drawable.uniquecode_right);
                     lblpswd.setVisibility(View.VISIBLE);
