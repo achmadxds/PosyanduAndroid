@@ -34,6 +34,8 @@ import butterknife.ButterKnife;
 
 public class KonsultasiActivity extends AppCompatActivity {
 
+    public String TAG = "KonsultasiActivity";
+
     @BindView(R.id.recycler_konsultasi)
     RecyclerView recyclerView;
     @BindView(R.id.txt_chat_konsultasi)
@@ -88,7 +90,7 @@ public class KonsultasiActivity extends AppCompatActivity {
         Date nowDate = new Date();
         DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String date = formatter.format(nowDate);
-        AndroidNetworking.post("http://192.168.1.11/posyandu/api_konsultasi.php")
+        AndroidNetworking.post("https://posyandukudus.000webhostapp.com/API/api_konsultasi.php")
                 .addBodyParameter("idAnggota", idAnggota)
                 .addBodyParameter("isi", messages)
                 .addBodyParameter("status", "Belum Terbalas")
@@ -97,6 +99,7 @@ public class KonsultasiActivity extends AppCompatActivity {
                 .getAsJSONObject(new JSONObjectRequestListener() {
                     @Override
                     public void onResponse(JSONObject response) {
+                        Log.d(TAG, "onResponse: " + response);
                         try {
                             if (response.getInt("status") == 0) Toast.makeText(getApplicationContext(), "Error in sending messages", Toast.LENGTH_SHORT).show();
                         } catch (JSONException e) {
@@ -128,7 +131,7 @@ public class KonsultasiActivity extends AppCompatActivity {
     private void addData() {
         progressBar.setVisibility(View.VISIBLE);
         arrayList = new ArrayList<>();
-        AndroidNetworking.get("http://192.168.1.11/posyandu/api_konsultasi.php")
+        AndroidNetworking.get("https://posyandukudus.000webhostapp.com/API/api_konsultasi.php")
                 .build()
                 .getAsJSONObject(new JSONObjectRequestListener() {
                     @Override

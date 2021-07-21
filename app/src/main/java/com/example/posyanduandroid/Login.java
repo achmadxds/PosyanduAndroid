@@ -67,7 +67,7 @@ public class Login extends AppCompatActivity {
           pd.setMessage("loading...");
           pd.show();
 
-          AndroidNetworking.post("https://posyandukudus.000webhostapp.com/API/api_login.php")
+          AndroidNetworking.post("http://192.168.1.12/Posyandu/API/api_login.php")
             .addBodyParameter("username", usm)
             .addBodyParameter("password", pswd)
             .setPriority(Priority.MEDIUM)

@@ -37,7 +37,7 @@ public class Registrasi extends AppCompatActivity {
   protected void onCreate(Bundle savedInstanceState) {
     AlertDialog alertDialog = new AlertDialog.Builder(Registrasi.this).create(); //Read Update
     alertDialog.setTitle("PESAN!!");
-    alertDialog.setMessage("Pastikan Anda Sudah Punya Kode Unik Dari Poyandu!!");
+    alertDialog.setMessage("Pastikan Anda Punya Kode Unik Dari Posyandu!!");
 
     super.onCreate(savedInstanceState);
     setContentView(R.layout.registrasi);
