@@ -90,7 +90,7 @@ public class KonsultasiActivity extends AppCompatActivity {
         Date nowDate = new Date();
         DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String date = formatter.format(nowDate);
-        AndroidNetworking.post("https://posyandukudus.000webhostapp.com/API/api_konsultasi.php")
+        AndroidNetworking.post("https://posyandubacin.000webhostapp.com/API/api_konsultasi.php")
                 .addBodyParameter("idAnggota", idAnggota)
                 .addBodyParameter("isi", messages)
                 .addBodyParameter("status", "Belum Terbalas")
@@ -121,6 +121,7 @@ public class KonsultasiActivity extends AppCompatActivity {
 
                     @Override
                     public void onError(ANError anError) {
+                        Log.d(TAG, "onError: " + anError);
                         anError.printStackTrace();
                         Toast.makeText(getApplicationContext(), anError.getMessage(), Toast.LENGTH_SHORT).show();
                         progressDialog.dismiss();
@@ -131,7 +132,7 @@ public class KonsultasiActivity extends AppCompatActivity {
     private void addData() {
         progressBar.setVisibility(View.VISIBLE);
         arrayList = new ArrayList<>();
-        AndroidNetworking.get("https://posyandukudus.000webhostapp.com/API/api_konsultasi.php")
+        AndroidNetworking.get("https://posyandubacin.000webhostapp.com/API/api_konsultasi.php")
                 .build()
                 .getAsJSONObject(new JSONObjectRequestListener() {
                     @Override
@@ -176,6 +177,7 @@ public class KonsultasiActivity extends AppCompatActivity {
 
                     @Override
                     public void onError(ANError anError) {
+                        Log.d(TAG, "onError: " + anError);
                         progressBar.setVisibility(View.GONE);
                         swipeRefreshLayout.setRefreshing(false);
                         anError.printStackTrace();

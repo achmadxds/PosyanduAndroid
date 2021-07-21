@@ -54,7 +54,7 @@ public class Layanan extends AppCompatActivity {
     sharedpreferences = getSharedPreferences(MY_PREFS_NAME, Context.MODE_PRIVATE);
     SharedPreferences.Editor editor = sharedpreferences.edit();
 
-    AndroidNetworking.get("https://posyandukudus.000webhostapp.com/API/api_layanan.php")
+    AndroidNetworking.get("https://posyandubacin.000webhostapp.com/API/api_layanan.php")
       .setPriority(Priority.LOW)
       .build()
       .getAsJSONArray(new JSONArrayRequestListener() {

@@ -16,6 +16,7 @@ import com.androidnetworking.common.Priority;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.JSONObjectRequestListener;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -51,7 +52,7 @@ public class Antrian extends AppCompatActivity {
     btn.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {
-        AndroidNetworking.post("https://posyandukudus.000webhostapp.com/API/api_antrian_input.php")
+        AndroidNetworking.post("http://192.168.1.37/Posyandu/API/api_input_antrian.php")
           .addBodyParameter("kdJadwal", KodeJadwal)
           .addBodyParameter("idAnggota", idAnggota)
           .addBodyParameter("parentAntrian", idAntrian)
@@ -63,6 +64,7 @@ public class Antrian extends AppCompatActivity {
           .getAsJSONObject(new JSONObjectRequestListener() {
             @Override
             public void onResponse(JSONObject response) {
+              Log.d(TAG, "onResponsUS: " + response);
               CheckHaveAntrian(mPrefs, KodeJadwal, idAnggota);
             }
 
@@ -82,17 +84,18 @@ public class Antrian extends AppCompatActivity {
     pd.setMessage("loading...");
     pd.show();
 
-    AndroidNetworking.post("https://posyandukudus.000webhostapp.com/API/api_antrian.php")
+    AndroidNetworking.post("http://192.168.1.37/Posyandu/API/api_antrian.php")
       .addBodyParameter("inputKodeJadwal", str)
       .setPriority(Priority.LOW)
       .build()
       .getAsJSONObject(new JSONObjectRequestListener() {
         @Override
         public void onResponse(JSONObject response) {
+          Log.d(TAG, "onResponse: " + response);
           pd.dismiss();
           try {
-            AndroidNetworking.post("https://posyandukudus.000webhostapp.com/API/api_checkHaveParentClock.php")
-              .addBodyParameter("kdJadwal", kodeJadwals)
+            AndroidNetworking.post("http://192.168.1.37/Posyandu/API/api_checkHaveParentClock.php")
+              .addBodyParameter("inputKodeJadwal", kodeJadwals)
               .setPriority(Priority.LOW)
               .build()
               .getAsJSONObject(new JSONObjectRequestListener() {
@@ -100,8 +103,6 @@ public class Antrian extends AppCompatActivity {
                 public void onResponse(JSONObject response) {
                   pd.dismiss();
                   try {
-                    Log.d(TAG, "onResponse: " + response.getString("jams"));
-
                     if(response.getString("jams").equals("null")) {
                       jamChild = mPrefs.getString("jamParent", "");
                       Log.d(TAG, "onResponse: Kosong, Ambil Parent" );
@@ -116,20 +117,21 @@ public class Antrian extends AppCompatActivity {
 
                 @Override
                 public void onError(ANError anError) {
-
+                  Log.d(TAG, "onError2: " + anError);
                 }
               });
             antrianNomor = response.getInt("maxUrut");
             TextView nomorUruts = findViewById(R.id.valueIncrement);
             nomorUruts.setText(String.valueOf(antrianNomor));
           } catch (JSONException e) {
+            pd.dismiss();
             e.printStackTrace();
           }
         }
 
         @Override
         public void onError(ANError anError) {
-
+          pd.dismiss();
         }
       });
   }
@@ -139,7 +141,7 @@ public class Antrian extends AppCompatActivity {
     pd.setMessage("loading...");
     pd.show();
 
-    AndroidNetworking.post("https://posyandukudus.000webhostapp.com/API/api_checkUserGetAntrian.php")
+    AndroidNetworking.post("https://posyandubacin.000webhostapp.com/API/api_checkUserGetAntrian.php")
       .addBodyParameter("kdJadwal", kdJaduwal)
       .addBodyParameter("idAnggota", aidiAnggota)
       .setPriority(Priority.LOW)
@@ -147,15 +149,18 @@ public class Antrian extends AppCompatActivity {
       .getAsJSONObject(new JSONObjectRequestListener() {
         @Override
         public void onResponse(JSONObject response) {
-          pd.dismiss();
           try {
+            pd.dismiss();
             switch (response.getString("msg")){
               case "Ada Isinya":
                 SharedPreferences.Editor editor = mPrefs.edit();
-                JSONObject datas = new JSONObject(response.getString("data"));
-                editor.putString("noUruts", datas.getString("noUrut"));
-                editor.putString("jamAntrian", datas.getString("jam"));
-                editor.commit();
+                JSONArray datas = new JSONArray(response.getString("data"));
+                for (int  i = 0; i < datas.length(); i++) {
+                  JSONObject jo = datas.getJSONObject(i);
+                  editor.putString("noUruts", jo.getString("noUruts"));
+                  editor.putString("jamAntrian", jo.getString("jamAntrian"));
+                  editor.commit();
+                }
 
                 ShowNewIntent();
                 break;
@@ -171,7 +176,7 @@ public class Antrian extends AppCompatActivity {
 
         @Override
         public void onError(ANError anError) {
-          Log.d(TAG, "onError: " + anError);
+          pd.dismiss();
         }
       });
   }

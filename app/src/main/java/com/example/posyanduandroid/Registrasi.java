@@ -54,7 +54,7 @@ public class Registrasi extends AppCompatActivity {
       pd.setMessage("loading...");
       pd.show();
 
-      AndroidNetworking.post("https://posyandukudus.000webhostapp.com/API/api_registrasi.php")
+      AndroidNetworking.post("https://posyandubacin.000webhostapp.com/API/api_registrasi.php")
         .addBodyParameter("idPengguna", idPengguna)
         .addBodyParameter("nama", nmUser)
         .addBodyParameter("username", usms.getText().toString().trim())
@@ -87,7 +87,7 @@ public class Registrasi extends AppCompatActivity {
     EditText uniqueCode = findViewById(R.id.uniquecode);
     uniqueCode.addTextChangedListener(new TextWatcher() {
       public void onTextChanged(CharSequence cs, int s, int b, int c) {
-        AndroidNetworking.post("https://posyandukudus.000webhostapp.com/API/api_checkUniqueCode.php")
+        AndroidNetworking.post("https://posyandubacin.000webhostapp.com/API/api_checkUniqueCode.php")
           .addBodyParameter("kodeUnik", cs.toString())
           .setPriority(Priority.LOW)
           .build()
@@ -119,7 +119,6 @@ public class Registrasi extends AppCompatActivity {
 
                   default:
                     JSONObject jos = new JSONObject(response.getString("data"));
-                    Log.d(TAG, "onResponse: " + jos);
                     idPengguna = jos.getString("idAnggota");
                     kdUnik = jos.getString("kdAnggota");
                     nmUser = jos.getString("nmAnggota");

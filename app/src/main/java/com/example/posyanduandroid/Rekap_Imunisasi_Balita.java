@@ -50,7 +50,7 @@ public class Rekap_Imunisasi_Balita extends AppCompatActivity {
     sharedpreferences = getSharedPreferences(MY_PREFS_NAME, Context.MODE_PRIVATE);
     String lastAidi = sharedpreferences.getString("idAnggotaLogin", "");
 
-    AndroidNetworking.post("https://posyandukudus.000webhostapp.com/API/api_balita_vaksin.php")
+    AndroidNetworking.post("https://posyandubacin.000webhostapp.com/API/api_balita_vaksin.php")
       .addBodyParameter("aidiAnggota", lastAidi)
       .setPriority(Priority.LOW)
       .build()

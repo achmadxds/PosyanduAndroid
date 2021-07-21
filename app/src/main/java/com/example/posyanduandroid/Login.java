@@ -67,7 +67,7 @@ public class Login extends AppCompatActivity {
           pd.setMessage("loading...");
           pd.show();
 
-          AndroidNetworking.post("http://192.168.1.12/Posyandu/API/api_login.php")
+          AndroidNetworking.post("https://posyandubacin.000webhostapp.com/API/api_login.php")
             .addBodyParameter("username", usm)
             .addBodyParameter("password", pswd)
             .setPriority(Priority.MEDIUM)
@@ -77,17 +77,20 @@ public class Login extends AppCompatActivity {
               public void onResponse(JSONObject response) {
                 pd.dismiss();
                 try {
-                  editor.putString("idAnggotaLogin", response.getString("idPengguna"));
-                  editor.putString("jenisUserLogin", response.getString("jenis"));
-                  editor.putString("usernameLogins", response.getString("username"));
-                  editor.putString("passwordLogins", response.getString("password"));
+                  JSONObject joj = new JSONObject(response.getString("user"));
+                  Log.d(TAG, "onResponse: " + joj);
+
+                  editor.putString("idAnggotaLogin", joj.getString("idPengguna"));
+                  editor.putString("jenisUserLogin", joj.getString("jenis"));
+                  editor.putString("usernameLogins", joj.getString("username"));
+                  editor.putString("passwordLogins", joj.getString("password"));
                   editor.commit();
+                  Intent i = new Intent(Login.this, Dashboard.class);
+                  startActivity(i);
+                  finish();
                 } catch (JSONException e) {
                   e.printStackTrace();
                 }
-                Intent i = new Intent(Login.this, Dashboard.class);
-                startActivity(i);
-                finish();
               }
 
               @Override
