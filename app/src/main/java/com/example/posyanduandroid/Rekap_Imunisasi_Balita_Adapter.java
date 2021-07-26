@@ -45,13 +45,16 @@ public class Rekap_Imunisasi_Balita_Adapter extends RecyclerView.Adapter<Rekap_I
     if (holder.getAdapterPosition() == 0) {
       holder.namaRekapImunisasiBalita.setBackgroundResource(R.drawable.table_header_cell_bg);
       holder.tanggalRekapImunisasiBalita.setBackgroundResource(R.drawable.table_header_cell_bg);
+      holder.descRekapImunisasiBalita.setBackgroundResource(R.drawable.table_header_cell_bg);
 
-      holder.namaRekapImunisasiBalita.setText("Nama Imunisasi");
+      holder.namaRekapImunisasiBalita.setText("Imunisasi");
       holder.tanggalRekapImunisasiBalita.setText("Tanggal");
+      holder.descRekapImunisasiBalita.setText("Deskripsi");
 
     } else {
       holder.namaRekapImunisasiBalita.setBackgroundResource(R.drawable.table_content_cell_bg);
       holder.tanggalRekapImunisasiBalita.setBackgroundResource(R.drawable.table_content_cell_bg);
+      holder.descRekapImunisasiBalita.setBackgroundResource(R.drawable.table_content_cell_bg);
 
       int pos = position -1;
       holder.namaRekapImunisasiBalita.setText(dataList.get(pos).getNmImunisasi());
@@ -69,6 +72,8 @@ public class Rekap_Imunisasi_Balita_Adapter extends RecyclerView.Adapter<Rekap_I
     TextView namaRekapImunisasiBalita;
     @BindView(R.id.tv_tanggal_rekapImunisasiBalita)
     TextView tanggalRekapImunisasiBalita;
+    @BindView(R.id.tv_desc_rekapImunisasiBalita)
+    TextView descRekapImunisasiBalita;
 
     public ListViewHolder(View itemView, OnItemClickListener mListener) {
       super(itemView);

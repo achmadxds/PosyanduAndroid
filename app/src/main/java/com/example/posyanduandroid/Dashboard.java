@@ -37,27 +37,21 @@ public class Dashboard extends AppCompatActivity {
     String jenis = mPrefs.getString("jenisUserLogin", "");
     String lastUsm = mPrefs.getString("usernameLogins", "");
 
-    TextView usr = findViewById(R.id.nameLastoLogin);
-    TextView jenise = findViewById(R.id.jenisLastoLogin);
-
-    usr.setText(lastUsm.toString());
-    jenise.setText(jenis.toString());
-
     arrayList = new ArrayList<>();
-    arrayList.add(new DashboardModel("Beranda", R.drawable.beranda, Beranda.class));
+    arrayList.add(new DashboardModel("Beranda", R.drawable.home, Beranda.class));
     arrayList.add(new DashboardModel("Layanan", R.drawable.services, Layanan.class));
-    arrayList.add(new DashboardModel("Konsultasi", R.drawable.konsultasi, KonsultasiActivity.class));
+    arrayList.add(new DashboardModel("Konsultasi", R.drawable.chat, KonsultasiActivity.class));
 
     switch (jenis) {
       case "Balita":
-        arrayList.add(new DashboardModel("Rekap Balita", R.drawable.rekap_bayi, Rekap.class));
+        arrayList.add(new DashboardModel("Rekap Balita", R.drawable.list, Rekap.class));
         break;
 
       case "Bumil":
         break;
 
       case "Lansia":
-        arrayList.add(new DashboardModel("Rekap Lansia", R.drawable.rekap_bayi, Rekap_Imunisasi_Lansia.class));
+        arrayList.add(new DashboardModel("Rekap Lansia", R.drawable.list, Rekap_Imunisasi_Lansia.class));
         break;
     }
 

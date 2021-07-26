@@ -108,10 +108,14 @@ public class Registrasi extends AppCompatActivity {
                 TextView lblrepswd = findViewById(R.id.daftarRePasswordLabel);
 
                 Button btnMakeAccount = findViewById(R.id.btnMakeAccount);
+                Button btnBackToLogin = findViewById(R.id.backToLogin);
+                Button btnBack = findViewById(R.id.btnBack);
 
                 switch (response.getString("data")) {
                   case "-":
-                    kodeUnixs.setBackgroundResource(R.drawable.rounded_bg);
+                    btnBack.setVisibility(View.GONE);
+                    btnBackToLogin.setVisibility(View.VISIBLE);
+                    kodeUnixs.setBackgroundResource(R.drawable.bg_rounded);
                     lblpswd.setVisibility(View.GONE);
                     lblrepswd.setVisibility(View.GONE);
                     lblUsm.setVisibility(View.GONE);
@@ -122,6 +126,9 @@ public class Registrasi extends AppCompatActivity {
                     break;
 
                   default:
+                    btnBack.setVisibility(View.VISIBLE);
+                    btnBackToLogin.setVisibility(View.GONE);
+                    Log.d(TAG, "onResponse: ");
                     JSONObject jos = new JSONObject(response.getString("data"));
                     idPengguna = jos.getString("idAnggota");
                     kdUnik = jos.getString("kdAnggota");

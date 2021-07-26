@@ -4,189 +4,181 @@
   android:layout_height="match_parent"
   android:layout_width="match_parent"
   xmlns:app="http://schemas.android.com/apk/res-auto"
-  android:background="@drawable/bgg_reg_antrian"
-  android:paddingLeft="@dimen/_10sdp"
-  android:paddingRight="@dimen/_10sdp"
-  android:paddingTop="@dimen/_17sdp"
-  android:paddingBottom="@dimen/_17sdp"
+  android:background="@drawable/bg_pertama"
   android:layout_gravity="center"
   android:orientation="vertical"
   tools:context=".Registrasi">
 
-    <ImageView
-      android:layout_width="@dimen/_270sdp"
-      android:layout_height="@dimen/_115sdp"
-      android:layout_marginTop="@dimen/_30sdp"
-      android:layout_centerHorizontal="true"
-      android:foregroundGravity="center"
-      android:background="@drawable/heading"
+  <ImageView
+    android:layout_marginTop="@dimen/_20sdp"
+    android:layout_width="@dimen/_170sdp"
+    android:layout_height="@dimen/_160sdp"
+    android:layout_centerHorizontal="true"
+    android:foregroundGravity="center"
+    android:layout_marginBottom="@dimen/_30sdp"
+    android:background="@drawable/silapos"
     />
 
-    <GridLayout
-      android:id="@+id/mainGrids"
+  <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_marginTop="@dimen/_170sdp"
+    android:layout_height="@dimen/_390sdp"
+    android:orientation="vertical"
+    android:paddingLeft="@dimen/_35sdp"
+    android:paddingRight="@dimen/_35sdp"
+    android:gravity="center_horizontal|left">
+
+    <TextView
+      android:text="Kode Unik"
+      android:layout_gravity="left"
+      android:paddingStart="@dimen/_5sdp"
+      android:textColor="@color/black"
+      android:textSize="@dimen/_16ssp"
+      android:textStyle="bold"
+      android:layout_marginTop="@dimen/_10sdp"
+      android:layout_width="@dimen/_100sdp"
+      android:layout_height="@dimen/_22sdp" />
+
+    <EditText
+      android:id="@+id/uniquecode"
+      android:layout_width="@dimen/_230sdp"
+      android:layout_height="@dimen/_35sdp"
+      android:layout_marginTop="@dimen/_5sdp"
+      android:paddingStart="@dimen/_10sdp"
+      android:hint="Masukan Kode Unik..."
+      android:background="@drawable/bg_rounded"
       android:layout_centerHorizontal="true"
-      android:layout_centerVertical="true"
-      android:layout_width="match_parent"
-      android:layout_height="@dimen/_600sdp"
-      android:paddingTop="@dimen/_60sdp"
-      android:paddingBottom="@dimen/_10sdp"
-      android:columnCount="1"
-      android:rowCount="2"
-      tools:ignore="MissingConstraints">
+      android:singleLine="true"
+      android:textColorHint="@color/black" />
 
-      <androidx.cardview.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/_30sdp"
-        android:layout_row="0"
-        android:layout_rowWeight="1"
-        android:layout_column="0"
-        android:layout_columnWeight="1"
-        android:layout_gravity="fill"
-        android:layout_marginTop="@dimen/_120sdp"
-        app:cardCornerRadius="@dimen/_10sdp"
-        app:cardElevation="@dimen/_5sdp"
-        app:cardUseCompatPadding="true"
-        tools:ignore="OnClick">
+    <Button
+      android:onClick="Kembali"
+      android:id="@+id/backToLogin"
+      android:layout_gravity="center"
+      android:layout_width="@dimen/_133sdp"
+      android:layout_height="@dimen/_33sdp"
+      android:textSize="@dimen/_13ssp"
+      android:layout_marginTop="@dimen/_15sdp"
+      android:backgroundTint="#1372d1"
+      android:text="Kembali"
+      android:textStyle="bold"
+      android:background="@drawable/bg_rounded"
+      android:layout_centerHorizontal="true"
+      android:textColor="@color/white"
+      android:textAllCaps="true"
+      />
 
-        <LinearLayout
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:layout_gravity="center_horizontal"
-          android:gravity="center"
-          android:orientation="vertical">
+    <TextView
+      android:visibility="gone"
+      android:id="@+id/daftarUsernameLabel"
+      android:text="Username"
+      android:layout_gravity="left"
+      android:paddingStart="@dimen/_5sdp"
+      android:textColor="@color/black"
+      android:textSize="@dimen/_18ssp"
+      android:textStyle="bold"
+      android:layout_marginTop="@dimen/_12sdp"
+      android:layout_width="@dimen/_100sdp"
+      android:layout_height="@dimen/_22sdp" />
 
-          <TextView
-            android:text="Kode Unik"
-            android:layout_gravity="left"
-            android:textColor="@color/black"
-            android:textSize="@dimen/_18ssp"
-            android:textStyle="bold"
-            android:layout_marginTop="@dimen/_22sdp"
-            android:layout_width="@dimen/_100sdp"
-            android:layout_height="@dimen/_22sdp" />
+    <EditText
+      android:visibility="gone"
+      android:id="@+id/daftarUsername"
+      android:layout_width="@dimen/_230sdp"
+      android:layout_height="@dimen/_35sdp"
+      android:layout_marginTop="@dimen/_4sdp"
+      android:paddingLeft="@dimen/_10sdp"
+      android:hint="Ketik Username"
+      android:background="@drawable/bg_rounded"
+      android:layout_centerHorizontal="true"
+      android:singleLine="true"
+      android:textColorHint="@color/black" />
 
-          <EditText
-            android:id="@+id/uniquecode"
-            android:layout_width="@dimen/_246sdp"
-            android:layout_height="@dimen/_29sdp"
-            android:layout_marginTop="@dimen/_4sdp"
-            android:paddingStart="@dimen/_10sdp"
-            android:hint="Masukan Kode Unik..."
-            android:background="@drawable/rounded_bg"
-            android:layout_centerHorizontal="true"
-            android:singleLine="true"
-            android:textColorHint="@color/black" />
+    <TextView
+      android:visibility="gone"
+      android:paddingStart="@dimen/_5sdp"
+      android:paddingLeft="@dimen/_10sdp"
+      android:id="@+id/daftarPasswordLabel"
+      android:text="Password"
+      android:layout_gravity="left"
+      android:textColor="@color/black"
+      android:textSize="@dimen/_18ssp"
+      android:textStyle="bold"
+      android:layout_marginTop="@dimen/_12sdp"
+      android:layout_width="@dimen/_100sdp"
+      android:layout_height="@dimen/_22sdp" />
 
-          <TextView
-            android:visibility="gone"
-            android:id="@+id/daftarUsernameLabel"
-            android:text="Username"
-            android:layout_gravity="left"
-            android:textColor="@color/black"
-            android:textSize="@dimen/_18ssp"
-            android:textStyle="bold"
-            android:layout_marginTop="@dimen/_12sdp"
-            android:layout_width="@dimen/_100sdp"
-            android:layout_height="@dimen/_22sdp" />
+    <EditText
+      android:visibility="gone"
+      android:id="@+id/daftarPassword"
+      android:layout_width="@dimen/_230sdp"
+      android:layout_height="@dimen/_35sdp"
+      android:layout_marginTop="@dimen/_4sdp"
+      android:paddingLeft="@dimen/_10sdp"
+      android:hint="Ketik Password"
+      android:inputType="textPassword"
+      android:background="@drawable/bg_rounded"
+      android:layout_centerHorizontal="true"
+      android:singleLine="true"
+      android:textColorHint="@color/black" />
 
-          <EditText
-            android:visibility="gone"
-            android:id="@+id/daftarUsername"
-            android:layout_width="@dimen/_246sdp"
-            android:layout_height="@dimen/_29sdp"
-            android:layout_marginTop="@dimen/_4sdp"
-            android:paddingLeft="@dimen/_10sdp"
-            android:hint="Ketik Username"
-            android:background="@drawable/rounded_bg"
-            android:layout_centerHorizontal="true"
-            android:singleLine="true"
-            android:textColorHint="@color/black" />
+    <TextView
+      android:visibility="gone"
+      android:paddingStart="@dimen/_5sdp"
+      android:paddingLeft="@dimen/_10sdp"
+      android:id="@+id/daftarRePasswordLabel"
+      android:text="Re-Password"
+      android:layout_gravity="left"
+      android:textColor="@color/black"
+      android:textSize="@dimen/_18ssp"
+      android:textStyle="bold"
+      android:layout_marginTop="@dimen/_12sdp"
+      android:layout_width="@dimen/_120sdp"
+      android:layout_height="@dimen/_22sdp" />
 
-          <TextView
-            android:paddingLeft="@dimen/_10sdp"
-            android:visibility="gone"
-            android:id="@+id/daftarPasswordLabel"
-            android:text="Password"
-            android:layout_gravity="left"
-            android:textColor="@color/black"
-            android:textSize="@dimen/_18ssp"
-            android:textStyle="bold"
-            android:layout_marginTop="@dimen/_12sdp"
-            android:layout_width="@dimen/_100sdp"
-            android:layout_height="@dimen/_22sdp" />
+    <EditText
+      android:visibility="gone"
+      android:id="@+id/daftarRePassword"
+      android:layout_width="@dimen/_230sdp"
+      android:layout_height="@dimen/_35sdp"
+      android:layout_marginTop="@dimen/_4sdp"
+      android:paddingLeft="@dimen/_10sdp"
+      android:inputType="textPassword"
+      android:hint="Tulis Ulang Password"
+      android:background="@drawable/bg_rounded"
+      android:layout_centerHorizontal="true"
+      android:singleLine="true"
+      android:textColorHint="@color/black" />
 
-          <EditText
-            android:visibility="gone"
-            android:id="@+id/daftarPassword"
-            android:layout_width="@dimen/_246sdp"
-            android:layout_height="@dimen/_29sdp"
-            android:layout_marginTop="@dimen/_4sdp"
-            android:paddingLeft="@dimen/_10sdp"
-            android:hint="Ketik Password"
-            android:inputType="textPassword"
-            android:background="@drawable/rounded_bg"
-            android:layout_centerHorizontal="true"
-            android:singleLine="true"
-            android:textColorHint="@color/black" />
+    <Button
+      android:visibility="gone"
+      android:id="@+id/btnMakeAccount"
+      android:layout_marginTop="@dimen/_18sdp"
+      android:layout_width="@dimen/_230sdp"
+      android:layout_height="@dimen/_35sdp"
+      android:textSize="@dimen/_13ssp"
+      android:textStyle="bold"
+      android:background="@drawable/bg_rounded"
+      android:layout_centerHorizontal="true"
+      android:textColor="@color/white"
+      android:backgroundTint="#1372d1"
+      android:text="Sign Up"
+      android:textAllCaps="true" />
 
-          <TextView
-            android:paddingLeft="@dimen/_10sdp"
-            android:visibility="gone"
-            android:id="@+id/daftarRePasswordLabel"
-            android:text="Re-Password"
-            android:layout_gravity="left"
-            android:textColor="@color/black"
-            android:textSize="@dimen/_18ssp"
-            android:textStyle="bold"
-            android:layout_marginTop="@dimen/_12sdp"
-            android:layout_width="@dimen/_120sdp"
-            android:layout_height="@dimen/_22sdp" />
+    <Button
+      android:visibility="gone"
+      android:id="@+id/btnBack"
+      android:layout_marginTop="@dimen/_10sdp"
+      android:layout_width="@dimen/_230sdp"
+      android:layout_height="@dimen/_35sdp"
+      android:textSize="@dimen/_13ssp"
+      android:textStyle="bold"
+      android:background="@drawable/bg_rounded"
+      android:layout_centerHorizontal="true"
+      android:textColor="#1372d1"
+      android:onClick="Kembali"
+      android:backgroundTint="@color/white"
+      android:text="Kembali"/>
 
-          <EditText
-            android:visibility="gone"
-            android:id="@+id/daftarRePassword"
-            android:layout_width="@dimen/_246sdp"
-            android:layout_height="@dimen/_29sdp"
-            android:layout_marginTop="@dimen/_4sdp"
-            android:paddingLeft="@dimen/_10sdp"
-            android:inputType="textPassword"
-            android:hint="Tulis Ulang Password"
-            android:background="@drawable/rounded_bg"
-            android:layout_centerHorizontal="true"
-            android:singleLine="true"
-            android:textColorHint="@color/black" />
-
-          <Button
-            android:visibility="gone"
-            android:id="@+id/btnMakeAccount"
-            android:layout_width="@dimen/_146sdp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_12sdp"
-            android:backgroundTint="#188fcc"
-            android:textSize="@dimen/_13ssp"
-            android:text="Daftar"
-            android:layout_centerHorizontal="true"
-            android:textColor="@color/white"
-            android:textAllCaps="true"
-            />
-
-          <Button
-            android:id="@+id/btnBackToLogin"
-            android:layout_width="@dimen/_146sdp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_3sdp"
-            android:layout_marginBottom="@dimen/_20sdp"
-            android:backgroundTint="#2448bd"
-            android:text="Kembali"
-            android:onClick="Kembali"
-            android:textSize="15dp"
-            android:layout_centerHorizontal="true"
-            android:textColor="@color/white"
-            android:textAllCaps="true" />
-
-        </LinearLayout>
-      </androidx.cardview.widget.CardView>
-
-    </GridLayout>
-
-  </RelativeLayout>
+  </LinearLayout>
+</RelativeLayout>

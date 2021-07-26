@@ -6,14 +6,14 @@
   android:layout_height="match_parent"
   android:orientation="vertical"
   tools:context=".Rekap_Imunisasi_Balita"
-  android:background="@drawable/bgg_rekap">
+  android:background="@drawable/rekap_data">
 
   <TextView
     android:layout_width="match_parent"
     android:layout_height="@dimen/_70sdp"
     android:text="REKAP IMUNISASI BALITA"
     android:textStyle="bold"
-    android:layout_marginTop="@dimen/_30sdp"
+    android:layout_marginTop="@dimen/_40sdp"
     android:layout_gravity="center"
     android:gravity="center"
     android:textColor="@color/white"
@@ -22,7 +22,7 @@
   <androidx.recyclerview.widget.RecyclerView
     android:paddingLeft="@dimen/_6sdp"
     android:paddingRight="@dimen/_6sdp"
-    android:layout_marginTop="@dimen/_20sdp"
+    android:layout_marginTop="@dimen/_10sdp"
     android:id="@+id/rv_rekap_imunisasi_balita"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"

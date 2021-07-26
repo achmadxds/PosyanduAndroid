@@ -114,6 +114,6 @@ public class Login extends AppCompatActivity {
   public void RegistrasiView(View view) {
     Intent i = new Intent(Login.this, Registrasi.class);
     startActivity(i);
-
+    finish();
   }
 }
