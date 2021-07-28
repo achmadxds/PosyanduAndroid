@@ -90,6 +90,9 @@ public class Login extends AppCompatActivity {
                   finish();
                 } catch (JSONException e) {
                   e.printStackTrace();
+                  Toast toast = Toast. makeText(getApplicationContext(), "Username / Password Salah!", Toast. LENGTH_SHORT);
+                  toast. show();
+                  pd.dismiss();
                 }
               }
 

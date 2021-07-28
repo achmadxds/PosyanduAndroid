@@ -5,27 +5,35 @@
   xmlns:tools="http://schemas.android.com/tools"
   android:layout_width="match_parent"
   android:layout_height="match_parent"
-  android:background="@drawable/bgs_main"
+  android:background="@drawable/bg_layanan"
   tools:context=".Dashboard">
 
   <TextView
     android:id="@+id/textView"
-    android:layout_width="@dimen/_200sdp"
-    android:layout_height="@dimen/_30ssp"
-    android:layout_marginTop="@dimen/_85sdp"
+    android:layout_width="@dimen/_120sdp"
+    android:layout_height="@dimen/_70ssp"
+    android:layout_marginTop="@dimen/_125sdp"
     android:fontFamily="sans-serif"
+    android:layout_marginStart="@dimen/_30sdp"
     android:layout_marginLeft="@dimen/_10sdp"
-    android:text="LIST LAYANAN"
-    android:textAllCaps="true"
+    android:text="Daftar Layanan"
     android:textColor="@color/white"
-    android:textSize="@dimen/_25ssp"
+    android:textSize="@dimen/_28ssp"
     android:textStyle="bold"
     android:typeface="normal"
     tools:ignore="MissingConstraints" />
 
+  <ImageView
+    android:id="@+id/image1"
+    android:layout_width="@dimen/_190sdp"
+    android:layout_height="@dimen/_185sdp"
+    android:layout_marginLeft="@dimen/_130sdp"
+    android:layout_marginTop="@dimen/_20sdp"
+    android:src="@drawable/illustasi" />
 
   <androidx.recyclerview.widget.RecyclerView
     android:id="@+id/rv_layanan"
+    android:orientation="vertical"
     android:layout_marginTop="@dimen/_200sdp"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"/>

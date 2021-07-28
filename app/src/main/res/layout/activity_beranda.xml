@@ -16,27 +16,12 @@
     android:src="@drawable/posyandu" />
 
   <TextView
-    android:textColor="@color/white"
-    android:id="@+id/textView7"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_marginTop="@dimen/_240sdp"
-    android:layout_marginLeft="@dimen/_15sdp"
-    android:shadowColor="#EB38CF1E"
-    android:shadowDx="1"
-    android:shadowDy="1"
-    android:shadowRadius="2"
-    android:text="POSYANDU BACIN :"
-    android:textSize="@dimen/_13ssp"
-    android:textStyle="bold"
-    android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
-
-  <TextView
     android:id="@+id/textViewVisi"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_marginTop="@dimen/_260sdp"
+    android:layout_marginTop="@dimen/_235sdp"
     android:layout_marginLeft="@dimen/_15sdp"
+    android:layout_marginRight="@dimen/_10sdp"
     android:text="Pogram Layanan : \n
         1. Check Kesehatan Rutin dibeberapa posyandu \n
         2. Pembagian Vitamin kepada anggota posyandu \n

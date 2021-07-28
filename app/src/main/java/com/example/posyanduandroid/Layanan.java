@@ -83,7 +83,7 @@ public class Layanan extends AppCompatActivity {
 
   private void ShowAdapter(SharedPreferences.Editor editor) {
     LayananAdapter adapter = new LayananAdapter(this, arrayList);
-    RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(this, 2);
+    RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(this, 1);
     recyclerView.setLayoutManager(mLayoutManager);
     recyclerView.setAdapter(adapter);
 
