@@ -8,8 +8,13 @@
   android:background="@drawable/dashboardu"
   tools:context=".Dashboard">
 
+  <androidx.viewpager.widget.ViewPager
+    android:id="@+id/viewPagerMain"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/_170sdp"/>
+
   <LinearLayout
-    android:layout_marginTop="@dimen/_190sdp"
+    android:layout_marginTop="@dimen/_175sdp"
     android:id="@+id/uppers"
     android:layout_width="match_parent"
     android:layout_height="@dimen/_100sdp"
@@ -48,17 +53,19 @@
           android:textStyle="bold"/>
 
         <TextView
+          android:id="@+id/namaDashboard"
           android:paddingStart="@dimen/_10sdp"
           android:layout_width="match_parent"
           android:layout_height="@dimen/_25sdp"
           android:text="Heni Asmawati"
-          android:textSize="@dimen/_16ssp"/>
+          android:textSize="@dimen/_18ssp"/>
 
       </LinearLayout>
 
     </LinearLayout>
 
     <TextView
+      android:id="@+id/jenisDashboard"
       android:layout_marginTop="@dimen/_7sdp"
       android:layout_marginStart="@dimen/_30sdp"
       android:layout_width="@dimen/_110sdp"

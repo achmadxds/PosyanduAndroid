@@ -37,9 +37,15 @@ public class Dashboard extends AppCompatActivity {
     String jenis = mPrefs.getString("jenisUserLogin", "");
     String lastUsm = mPrefs.getString("usernameLogins", "");
 
+    TextView namaD = findViewById(R.id.namaDashboard);
+    TextView jenisD = findViewById(R.id.jenisDashboard);
+
+    namaD.setText(lastUsm.toString());
+    jenisD.setText(jenis.toString());
+
     arrayList = new ArrayList<>();
     arrayList.add(new DashboardModel("Beranda", R.drawable.home, Beranda.class));
-    arrayList.add(new DashboardModel("Layanan", R.drawable.services, Layanan.class));
+    arrayList.add(new DashboardModel("Layanan", R.drawable.unnamed, Layanan.class));
     arrayList.add(new DashboardModel("Konsultasi", R.drawable.chat, KonsultasiActivity.class));
 
     switch (jenis) {
