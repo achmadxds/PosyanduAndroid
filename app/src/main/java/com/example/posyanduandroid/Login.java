@@ -32,11 +32,14 @@ public class Login extends AppCompatActivity {
   private String MY_PREFS_NAME = "MyPrefs";
   private SharedPreferences sharedpreferences;
 
+  String BASE_URL;
+
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.login);
 
+    BASE_URL = getString(R.string.base_url);
     username = findViewById(R.id.uName);
     password = findViewById(R.id.passwords);
     loginButton = findViewById(R.id.btnLogin);
@@ -67,7 +70,7 @@ public class Login extends AppCompatActivity {
           pd.setMessage("loading...");
           pd.show();
 
-          AndroidNetworking.post("https://posyandubacin.000webhostapp.com/API/api_login.php")
+          AndroidNetworking.post(BASE_URL + "API/api_login.php")
             .addBodyParameter("username", usm)
             .addBodyParameter("password", pswd)
             .setPriority(Priority.MEDIUM)

@@ -31,6 +31,8 @@ public class Rekap_Imunisasi_Balita extends AppCompatActivity {
   @BindView(R.id.rv_rekap_imunisasi_balita)
   RecyclerView recyclerView;
 
+  String BASE_URL;
+
   private Rekap_Imunisasi_Balita_Adapter rekapImunAdapter;
   private ArrayList<Rekap_Imunisasi_Balita_Model> rekapImunArray;
   private SharedPreferences sharedpreferences;
@@ -39,6 +41,8 @@ public class Rekap_Imunisasi_Balita extends AppCompatActivity {
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_rekap_imunisasi_balita);
+
+    BASE_URL = getString(R.string.base_url);
 
     ButterKnife.bind(this);
 
@@ -50,7 +54,7 @@ public class Rekap_Imunisasi_Balita extends AppCompatActivity {
     sharedpreferences = getSharedPreferences(MY_PREFS_NAME, Context.MODE_PRIVATE);
     String lastAidi = sharedpreferences.getString("idAnggotaLogin", "");
 
-    AndroidNetworking.post("https://posyandubacin.000webhostapp.com/API/api_balita_vaksin.php")
+    AndroidNetworking.post(BASE_URL + "API/api_balita_vaksin.php")
       .addBodyParameter("aidiAnggota", lastAidi)
       .setPriority(Priority.LOW)
       .build()

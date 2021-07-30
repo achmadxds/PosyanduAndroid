@@ -5,106 +5,115 @@
   xmlns:tools="http://schemas.android.com/tools"
   android:layout_width="match_parent"
   android:layout_height="match_parent"
-  android:background="@drawable/dashboardu"
+  android:background="@color/white"
   tools:context=".Dashboard">
 
   <androidx.viewpager.widget.ViewPager
     android:id="@+id/viewPagerMain"
     android:layout_width="match_parent"
-    android:layout_height="@dimen/_170sdp"/>
+    android:layout_height="@dimen/_193sdp"/>
 
   <LinearLayout
-    android:layout_marginTop="@dimen/_175sdp"
-    android:id="@+id/uppers"
+    android:layout_marginTop="@dimen/_160sdp"
     android:layout_width="match_parent"
-    android:layout_height="@dimen/_100sdp"
-    android:layout_centerHorizontal="true"
+    android:layout_height="match_parent"
+    android:background="@drawable/dashboard1"
     android:orientation="vertical">
 
     <LinearLayout
-      android:layout_marginStart="@dimen/_30sdp"
-      android:layout_marginTop="@dimen/_5sdp"
-      android:layout_width="@dimen/_250sdp"
-      android:layout_height="@dimen/_50sdp"
-      android:orientation="horizontal">
-
-      <de.hdodenhof.circleimageview.CircleImageView
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/profile_image"
-        android:layout_width="@dimen/_50sdp"
-        android:layout_height="@dimen/_50sdp"
-        android:src="@drawable/profile"
-        app:civ_border_width="@dimen/_2sdp"
-        app:civ_border_color="#FF000000"/>
+      android:layout_marginTop="@dimen/_10sdp"
+      android:id="@+id/uppers"
+      android:layout_width="match_parent"
+      android:layout_height="@dimen/_100sdp"
+      android:layout_centerHorizontal="true"
+      android:orientation="vertical">
 
       <LinearLayout
-        android:paddingTop="@dimen/_6sdp"
-        android:layout_width="@dimen/_230sdp"
+        android:layout_marginStart="@dimen/_30sdp"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:layout_width="@dimen/_250sdp"
         android:layout_height="@dimen/_50sdp"
-        android:orientation="vertical"
-        android:gravity="center">
+        android:orientation="horizontal">
 
-        <TextView
-          android:layout_width="match_parent"
-          android:paddingStart="@dimen/_10sdp"
-          android:layout_height="@dimen/_20sdp"
-          android:text="Hello,"
-          android:textSize="@dimen/_17ssp"
-          android:textStyle="bold"/>
+        <de.hdodenhof.circleimageview.CircleImageView
+          xmlns:app="http://schemas.android.com/apk/res-auto"
+          android:id="@+id/profile_image"
+          android:layout_width="@dimen/_50sdp"
+          android:layout_height="@dimen/_50sdp"
+          android:src="@drawable/profile"
+          app:civ_border_width="@dimen/_2sdp"
+          app:civ_border_color="#FF000000"/>
 
-        <TextView
-          android:id="@+id/namaDashboard"
-          android:paddingStart="@dimen/_10sdp"
-          android:layout_width="match_parent"
-          android:layout_height="@dimen/_25sdp"
-          android:text="Heni Asmawati"
-          android:textSize="@dimen/_18ssp"/>
+        <LinearLayout
+          android:paddingTop="@dimen/_6sdp"
+          android:layout_width="@dimen/_230sdp"
+          android:layout_height="@dimen/_50sdp"
+          android:orientation="vertical"
+          android:gravity="center">
+
+          <TextView
+            android:layout_width="match_parent"
+            android:paddingStart="@dimen/_10sdp"
+            android:layout_height="@dimen/_20sdp"
+            android:text="Hello,"
+            android:textSize="@dimen/_17ssp"
+            android:textStyle="bold"/>
+
+          <TextView
+            android:id="@+id/namaDashboard"
+            android:paddingStart="@dimen/_10sdp"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_25sdp"
+            android:text="Heni Asmawati"
+            android:textSize="@dimen/_18ssp"/>
+
+        </LinearLayout>
 
       </LinearLayout>
 
+      <TextView
+        android:id="@+id/jenisDashboard"
+        android:layout_marginTop="@dimen/_7sdp"
+        android:layout_marginStart="@dimen/_30sdp"
+        android:layout_width="@dimen/_110sdp"
+        android:layout_height="@dimen/_26sdp"
+        android:textAlignment="center"
+        android:gravity="center"
+        android:textSize="@dimen/_12ssp"
+        android:textStyle="bold"
+        android:text="Ibu Balita"
+        android:textColor="@color/white"
+        android:backgroundTint="#1372d1"
+        android:background="@drawable/bg_rounded"/>
+
     </LinearLayout>
 
-    <TextView
-      android:id="@+id/jenisDashboard"
-      android:layout_marginTop="@dimen/_7sdp"
-      android:layout_marginStart="@dimen/_30sdp"
-      android:layout_width="@dimen/_110sdp"
-      android:layout_height="@dimen/_26sdp"
-      android:textAlignment="center"
-      android:gravity="center"
-      android:textSize="@dimen/_12ssp"
-      android:textStyle="bold"
-      android:text="Ibu Balita"
-      android:textColor="@color/white"
+    <androidx.recyclerview.widget.RecyclerView
+      android:paddingRight="@dimen/_20sdp"
+      android:paddingLeft="@dimen/_20sdp"
+      android:id="@+id/rv_dashboard"
+      android:layout_below="@id/uppers"
+      android:layout_above="@id/btn_logout"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"/>
+
+    <Button
+      android:layout_gravity="center"
+      android:id="@+id/btn_logout"
+      android:layout_marginTop="@dimen/_20sdp"
+      android:layout_alignParentBottom="true"
+      android:layout_width="@dimen/_135sdp"
+      android:layout_height="@dimen/_35sdp"
+      android:background="@drawable/bg_rounded"
       android:backgroundTint="#1372d1"
-      android:background="@drawable/bg_rounded"/>
+      android:textSize="@dimen/_13ssp"
+      android:textColor="@color/white"
+      android:onClick="Logout"
+      android:textStyle="bold"
+      android:text="Log Out">
+
+    </Button>
 
   </LinearLayout>
-
-  <androidx.recyclerview.widget.RecyclerView
-    android:paddingRight="@dimen/_20sdp"
-    android:paddingLeft="@dimen/_20sdp"
-    android:id="@+id/rv_dashboard"
-    android:layout_below="@id/uppers"
-    android:layout_above="@id/btn_logout"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"/>
-
-  <Button
-    android:id="@+id/btn_logout"
-    android:layout_marginBottom="@dimen/_50sdp"
-    android:layout_alignParentBottom="true"
-    android:layout_width="@dimen/_135sdp"
-    android:layout_height="@dimen/_35sdp"
-    android:layout_centerHorizontal="true"
-    android:background="@drawable/bg_rounded"
-    android:backgroundTint="#1372d1"
-    android:textSize="@dimen/_13ssp"
-    android:textColor="@color/white"
-    android:onClick="Logout"
-    android:textStyle="bold"
-    android:text="Log Out">
-
-  </Button>
 
 </RelativeLayout>

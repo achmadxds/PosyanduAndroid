@@ -31,6 +31,8 @@ public class RekapFisikActivity extends AppCompatActivity {
   @BindView(R.id.rv_jadwal)
   RecyclerView recyclerView;
 
+  String BASE_URL;
+
   private RekapFisikAdapter rekapFisikAdapter;
   private ArrayList<RekapFisikModel> rekapFisikArray;
   private SharedPreferences sharedpreferences;
@@ -40,6 +42,7 @@ public class RekapFisikActivity extends AppCompatActivity {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_rekapfisikbalita);
 
+    BASE_URL = getString(R.string.base_url);
     ButterKnife.bind(this);
 
     addData();
@@ -50,7 +53,7 @@ public class RekapFisikActivity extends AppCompatActivity {
     sharedpreferences = getSharedPreferences(MY_PREFS_NAME, Context.MODE_PRIVATE);
     String lastAidi = sharedpreferences.getString("idAnggotaLogin", "");
 
-    AndroidNetworking.post("https://posyandubacin.000webhostapp.com/API/api_balita_fisik.php")
+    AndroidNetworking.post(BASE_URL + "API/api_balita_fisik.php")
       .addBodyParameter("aidiAnggota", lastAidi)
       .setPriority(Priority.LOW)
       .build()

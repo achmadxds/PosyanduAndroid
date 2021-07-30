@@ -31,6 +31,8 @@ public class Rekap_Imunisasi_Lansia extends AppCompatActivity {
   @BindView(R.id.rv_rekap_imunisasi_lansia)
   RecyclerView recyclerView;
 
+  String BASE_URL;
+
   private Rekap_Imunisasi_Lansia_Adapter rekapImunAdapter;
   private ArrayList<Rekap_Imunisasi_Lansia_Model> rekapImunArray;
   private SharedPreferences sharedpreferences;
@@ -40,6 +42,7 @@ public class Rekap_Imunisasi_Lansia extends AppCompatActivity {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_rekap_imunisasi_lansia);
 
+    BASE_URL = getString(R.string.base_url);
     ButterKnife.bind(this);
 
     addData();
@@ -50,7 +53,7 @@ public class Rekap_Imunisasi_Lansia extends AppCompatActivity {
     sharedpreferences = getSharedPreferences(MY_PREFS_NAME, Context.MODE_PRIVATE);
     String lastAidi = sharedpreferences.getString("idAnggotaLogin", "");
 
-    AndroidNetworking.post("https://posyandubacin.000webhostapp.com/API/api_lansia_vaksin.php")
+    AndroidNetworking.post(BASE_URL + "API/api_lansia_vaksin.php")
       .addBodyParameter("aidiAnggota", lastAidi)
       .setPriority(Priority.LOW)
       .build()

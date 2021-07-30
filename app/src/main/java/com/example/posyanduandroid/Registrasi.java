@@ -31,7 +31,7 @@ import java.util.Arrays;
 
 public class Registrasi extends AppCompatActivity {
   private String TAG = "Registrasi";
-  private String idPengguna, nmUser, kdUnik;
+  private String idPengguna, nmUser, kdUnik, BASE_URL;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +39,7 @@ public class Registrasi extends AppCompatActivity {
     alertDialog.setTitle("PESAN!!");
     alertDialog.setMessage("Pastikan Anda Punya Kode Unik Dari Posyandu!!");
 
+    BASE_URL = getString(R.string.base_url);
     super.onCreate(savedInstanceState);
     setContentView(R.layout.registrasi);
     alertDialog.show();
@@ -56,7 +57,7 @@ public class Registrasi extends AppCompatActivity {
       pd.setMessage("loading...");
       pd.show();
 
-      AndroidNetworking.post("https://posyandubacin.000webhostapp.com/API/api_registrasi.php")
+      AndroidNetworking.post(BASE_URL + "API/api_registrasi.php")
         .addBodyParameter("idPengguna", idPengguna)
         .addBodyParameter("nama", nmUser)
         .addBodyParameter("username", usms.getText().toString().trim())
@@ -91,7 +92,7 @@ public class Registrasi extends AppCompatActivity {
     EditText uniqueCode = findViewById(R.id.uniquecode);
     uniqueCode.addTextChangedListener(new TextWatcher() {
       public void onTextChanged(CharSequence cs, int s, int b, int c) {
-        AndroidNetworking.post("https://posyandubacin.000webhostapp.com/API/api_checkUniqueCode.php")
+        AndroidNetworking.post(BASE_URL + "API/api_checkUniqueCode.php")
           .addBodyParameter("kodeUnik", cs.toString())
           .setPriority(Priority.LOW)
           .build()

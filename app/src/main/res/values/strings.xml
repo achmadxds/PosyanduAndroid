@@ -1,8 +1,8 @@
 <resources>
-    <string name="app_name">Posyandu-Ku</string>
+    <string name="app_name">Silapos</string>
     <string name="username_login"> username... </string>
     <string name="password_login"> password... </string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="base_url">https://posyandubacin.000webhostapp.com/</string>
+    <string name="base_url">https://silapos.000webhostapp.com/</string>
 </resources>

@@ -23,8 +23,8 @@
     android:layout_marginLeft="@dimen/_15sdp"
     android:layout_marginRight="@dimen/_10sdp"
     android:text="Pogram Layanan : \n
-        1. Check Kesehatan Rutin dibeberapa posyandu \n
-        2. Pembagian Vitamin kepada anggota posyandu \n
+        1. Check Kesehatan Rutin \n
+        2. Pembagian Vitamin \n
         3. Suntik Imunisasi / Vaksin \n
         4. Cek Kehamilan &amp; Cek Masa Subur"
     android:textSize="@dimen/_14ssp"

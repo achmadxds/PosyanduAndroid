@@ -52,12 +52,14 @@ public class KonsultasiActivity extends AppCompatActivity {
     private List<KonsultasiModel> arrayList;
     private KonsultasiAdapter adapter;
     private SharedPreferences mPrefs;
+    String BASE_URL;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_konsultasi);
 
+        BASE_URL = getString(R.string.base_url);
         ButterKnife.bind(this);
         progressDialog = new ProgressDialog(this);
 
@@ -88,13 +90,11 @@ public class KonsultasiActivity extends AppCompatActivity {
 
         String idAnggota = mPrefs.getString("idAnggotaLogin", "");
         String messages = txt_chat.getText().toString();
-      Log.d(TAG, "sendChat: " + idAnggota);
-      Log.d(TAG, "sendChat: " + messages);
 
         Date nowDate = new Date();
         DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String date = formatter.format(nowDate);
-        AndroidNetworking.post("https://posyandubacin.000webhostapp.com/API/api_konsultasi.php")
+        AndroidNetworking.post(BASE_URL + "API/api_konsultasi.php")
                 .addBodyParameter("idAnggota", idAnggota)
                 .addBodyParameter("isi", messages)
                 .addBodyParameter("status", "Belum Terbalas")
@@ -134,9 +134,12 @@ public class KonsultasiActivity extends AppCompatActivity {
     }
 
     private void addData() {
+        String idAnggota = mPrefs.getString("idAnggotaLogin", "");
+        Log.d(TAG, "addData: " + idAnggota);
+
         progressBar.setVisibility(View.VISIBLE);
         arrayList = new ArrayList<>();
-        AndroidNetworking.get("https://posyandubacin.000webhostapp.com/API/api_konsultasi.php")
+        AndroidNetworking.get(BASE_URL + "API/api_konsultasi.php?idAnggota=" + idAnggota)
                 .build()
                 .getAsJSONObject(new JSONObjectRequestListener() {
                     @Override

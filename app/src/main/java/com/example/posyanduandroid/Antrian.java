@@ -32,11 +32,14 @@ public class Antrian extends AppCompatActivity {
   private String jamChild;
   SharedPreferences mPrefs;
 
+  String BASE_URL;
+
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_antrian);
 
+    BASE_URL = getString(R.string.base_url);
     TextView nmLayanID = findViewById(R.id.NamaLayanans);
     mPrefs = getSharedPreferences("MyPrefs",0);
     String name = mPrefs.getString("NameKey", "");
@@ -52,11 +55,7 @@ public class Antrian extends AppCompatActivity {
     btn.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {
-        Log.d(TAG, "onClick: " + KodeJadwal);
-        Log.d(TAG, "onClick: " + idAnggota);
-        Log.d(TAG, "onClick: " + idAntrian);
-        Log.d(TAG, "onClick: " + jamChild);
-        AndroidNetworking.post("https://posyandubacin.000webhostapp.com/API/api_input_antrian.php")
+        AndroidNetworking.post(BASE_URL + "API/api_input_antrian.php")
           .addBodyParameter("kdJadwal", KodeJadwal)
           .addBodyParameter("idAnggota", idAnggota)
           .addBodyParameter("parentAntrian", idAntrian)
@@ -89,7 +88,7 @@ public class Antrian extends AppCompatActivity {
     pd.setMessage("loading...");
     pd.show();
 
-    AndroidNetworking.post("https://posyandubacin.000webhostapp.com/API/api_antrian.php")
+    AndroidNetworking.post(BASE_URL + "API/api_antrian.php")
       .addBodyParameter("inputKodeJadwal", str)
       .setPriority(Priority.LOW)
       .build()
@@ -99,7 +98,7 @@ public class Antrian extends AppCompatActivity {
           Log.d(TAG, "onResponse: " + response);
           pd.dismiss();
           try {
-            AndroidNetworking.post("https://posyandubacin.000webhostapp.com/API/api_checkHaveParentClock.php")
+            AndroidNetworking.post(BASE_URL + "API/api_checkHaveParentClock.php")
               .addBodyParameter("inputKodeJadwal", kodeJadwals)
               .setPriority(Priority.LOW)
               .build()
@@ -111,11 +110,8 @@ public class Antrian extends AppCompatActivity {
                   try {
                     if(response.getString("jams").equals("null")) {
                       jamChild = mPrefs.getString("jamParent", "");
-                      Log.d(TAG, "onResponse: Kosong, Ambil Parent" );
                     } else {
-                      Log.d(TAG, "onResponse: " + response);
                       jamChild = response.getString("jams");
-                      Log.d(TAG, "onResponse: Ada Max Nya");
                     }
                   } catch (JSONException e) {
                     e.printStackTrace();
@@ -148,7 +144,7 @@ public class Antrian extends AppCompatActivity {
     pd.setMessage("loading...");
     pd.show();
 
-    AndroidNetworking.post("https://posyandubacin.000webhostapp.com/API/api_checkUserGetAntrian.php")
+    AndroidNetworking.post(BASE_URL + "API/api_checkUserGetAntrian.php")
       .addBodyParameter("kdJadwal", kdJaduwal)
       .addBodyParameter("idAnggota", aidiAnggota)
       .setPriority(Priority.LOW)

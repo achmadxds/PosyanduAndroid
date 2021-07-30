@@ -35,10 +35,13 @@ public class Layanan extends AppCompatActivity {
   @BindView(R.id.rv_layanan)
   RecyclerView recyclerView;
 
+  String BASE_URL;
+
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_layanan);
+    BASE_URL = getString(R.string.base_url);
 
     ButterKnife.bind(this);
 
@@ -53,8 +56,9 @@ public class Layanan extends AppCompatActivity {
     arrayList = new ArrayList<>();
     sharedpreferences = getSharedPreferences(MY_PREFS_NAME, Context.MODE_PRIVATE);
     SharedPreferences.Editor editor = sharedpreferences.edit();
+    String jenis = sharedpreferences.getString("jenisUserLogin", "");
 
-    AndroidNetworking.get("https://posyandubacin.000webhostapp.com/API/api_layanan.php")
+    AndroidNetworking.get(BASE_URL + "API/api_layanan.php?jnsLayanan=" + jenis)
       .setPriority(Priority.LOW)
       .build()
       .getAsJSONArray(new JSONArrayRequestListener() {

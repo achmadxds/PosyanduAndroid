@@ -9,6 +9,7 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.viewpager.widget.ViewPager;
 
 import java.util.ArrayList;
 
@@ -18,6 +19,11 @@ import butterknife.ButterKnife;
 public class Dashboard extends AppCompatActivity {
 
   private ArrayList<DashboardModel> arrayList;
+
+  ViewPager mViewPager;
+  ViewPagerAdapter mViewPagerAdapter;
+
+  int[] images = {R.drawable.sliders5, R.drawable.sliders2, R.drawable.sliders3, R.drawable.sliders4, R.drawable.sliders1};
 
   @BindView(R.id.rv_dashboard)
   RecyclerView recyclerView;
@@ -34,6 +40,10 @@ public class Dashboard extends AppCompatActivity {
   }
 
   private void addData() {
+    mViewPager = (ViewPager)findViewById(R.id.viewPagerMain);
+    mViewPagerAdapter = new ViewPagerAdapter(Dashboard.this, images);
+    mViewPager.setAdapter(mViewPagerAdapter);
+
     String jenis = mPrefs.getString("jenisUserLogin", "");
     String lastUsm = mPrefs.getString("usernameLogins", "");
 
