@@ -100,7 +100,7 @@
     <Button
       android:layout_gravity="center"
       android:id="@+id/btn_logout"
-      android:layout_marginTop="@dimen/_20sdp"
+      android:layout_marginTop="@dimen/_5sdp"
       android:layout_alignParentBottom="true"
       android:layout_width="@dimen/_135sdp"
       android:layout_height="@dimen/_35sdp"

@@ -57,6 +57,7 @@ public class Layanan extends AppCompatActivity {
     sharedpreferences = getSharedPreferences(MY_PREFS_NAME, Context.MODE_PRIVATE);
     SharedPreferences.Editor editor = sharedpreferences.edit();
     String jenis = sharedpreferences.getString("jenisUserLogin", "");
+    Log.d(TAG, "addData: " + jenis);
 
     AndroidNetworking.get(BASE_URL + "API/api_layanan.php?jnsLayanan=" + jenis)
       .setPriority(Priority.LOW)
@@ -64,6 +65,7 @@ public class Layanan extends AppCompatActivity {
       .getAsJSONArray(new JSONArrayRequestListener() {
         @Override
         public void onResponse(JSONArray response) {
+          Log.d(TAG, "onResponse: " + response);
           pd.dismiss();
           try {
             for (int i = 0; i < response.length(); i++) {
@@ -80,7 +82,7 @@ public class Layanan extends AppCompatActivity {
 
         @Override
         public void onError(ANError anError) {
-
+          Log.d(TAG, "onError: " + anError);
         }
       });
   }

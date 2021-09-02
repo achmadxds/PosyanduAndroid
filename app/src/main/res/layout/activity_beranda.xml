@@ -31,25 +31,11 @@
     android:textColor="@color/white"
     android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
 
-  <Button
-    android:id="@+id/btnBack"
-    android:layout_width="@dimen/_140sdp"
-    android:layout_height="wrap_content"
-    android:onClick="backtoMenu"
-    android:layout_marginTop="@dimen/_470sdp"
-    android:layout_centerHorizontal="true"
-    android:backgroundTint="#1372d1"
-    android:text="Kembali Ke Menu"
-    android:layout_gravity="center"
-    android:textColor="@color/white"
-    android:textSize="10sp"
-    tools:ignore="OnClick" />
-
   <TextView
     android:layout_width="@dimen/_120sdp"
     android:layout_height="@dimen/_35sdp"
     android:layout_centerHorizontal="true"
-    android:layout_marginVertical="680dp"
+    android:layout_marginVertical="600dp"
     android:text=" TIM PKM-PM \n UNIVERSITAS MURIA KUDUS"
     android:textAlignment="center"
     android:textStyle="bold"

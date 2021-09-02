@@ -11,13 +11,13 @@
   <TextView
     android:layout_width="match_parent"
     android:layout_height="@dimen/_70sdp"
-    android:text="REKAP VAKSIN LANSIA"
+    android:text="REKAP VAKSIN \n LANSIA"
     android:textStyle="bold"
     android:layout_marginTop="@dimen/_30sdp"
     android:layout_gravity="center"
     android:gravity="center"
     android:textColor="@color/white"
-    android:textSize="@dimen/_28ssp"/>
+    android:textSize="@dimen/_25ssp"/>
 
   <androidx.recyclerview.widget.RecyclerView
     android:paddingLeft="@dimen/_6sdp"
